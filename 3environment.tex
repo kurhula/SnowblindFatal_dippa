@@ -1,5 +1,31 @@
 \chapter{Environment}
 \label{chapter:environment}
 
-Maintenance business is such that there is need for solving the vehicle routing
-problem.
+
+
+The distances to the customers vary greatly and can range from hundreds of kilometres to being in the same neighbourhood. 
+
+When planning routes for the technicians, one has to take into account the requirements for each job and the limits of the workers and vehicles. There are also date and time constraints involved. The jobs have to be scheduled within 4-week windows determined by customers' preferences. Likewise, there may be specific hours of day during which the job must be done, if the customer needs to be present to let the technicians inside, for example. 
+
+The required building materials must fit into the vehicle and the total hours of the working day typically should not exceed 8 hours. 
+
+Different technicians have different skills, and some may perform faster than others. Some jobs can be done by a single technician, while others may require multiple people to do the job. 
+
+
+The type of the house also plays a role. A detached house has different set of challenges than an apartment building. The size of the house also affects on the difficulty as well as the equipment and time requirements of the job.
+
+Currently planning routes for the technicians is done by hand by an employee dedicated to the task. Due to the mechanical, repetitive and complex nature of the task, it is a suitable target for a computer algorithm to solve.
+
+
+
+\section{Input data source}
+
+The input data for the program comes from the client company's sales data. The data contains the following information:
+
+\begin{enumerate}  
+\item The address of the customer
+\item The type of the house 
+\item The items to be installed to the house or the items previously installed in case of a service visit
+\item The time window for the job
+\end{enumerate}
+
