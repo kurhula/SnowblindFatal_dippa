@@ -6,3 +6,40 @@ My experiences during the whole ordeal
 \section{Technical decisions}
 
 Picking libraries, choosing languages, determining algorithms, yeah!
+
+
+\subsection{Choosing the libraries to use}
+
+The important criteria for choosing the libraries to use are performance, solution quality and suitability to the parameters specific to this project. Ease of use and the quality of documentation are also signifcant factors.
+
+Since there are so many different variations of the VRP, finding one which satisfies the requirements of the business context of this project will be challenging, and may require adapting the parameters to make them compatible with the library API. If that is not possible, writing an algorithm of my own will be necessary.
+
+
+\subsection{Language requirements}
+
+The most important aspect of choosing which language to use depends on the routing algorithm libraries available for the language. 
+
+Because the algorithm is CPU-intensive, the more low-level languages take precedence over the potentially slower high-level languages. This is not a deciding factor, however, as many of the high-level languages are still sufficiently fast enough for this purpose. Likewise, even if a program written in pure C, for example, might perform better, the increased development time and reduced maintainability are more significant significant issues than a slightly reduced performance of a Java program.
+
+Due to the performance-centric nature of the algorithm, it is important that the language chosen can be profiled to see which parts of the algorithm are the most resource-intensive. Though most modern languages fulfill this requirement, it is worthy of mentioning.
+
+
+\subsection{Langugage and library decision}
+
+What did I choose?
+
+\section{Development of the program}
+
+\subsection{Structure of the program}
+
+To ensure future maintainability, the program should be modular, so if some part of the program needs to changed, the operation would be as easy as possible. The modules of the program would be as follows:
+
+\begin{enumerate}  
+\item Routing module, transforming address data into a traveling cost matrix.
+\item Job resource calculator, abstracting the job resource and man-hour requirements into numbers.
+\item The algorithm module, using the traveling cost matrix and job requirements to produce route data.
+\item Results visualiser, displaying the results data in a more human-readable form.
+\item Results storing module, converting the results into data suitable to be stored in the client company's database. 
+\end{enumerate}
+
+ 
