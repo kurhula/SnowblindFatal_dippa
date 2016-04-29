@@ -2,12 +2,83 @@
 \label{chapter:background} 
 
 \section{Problem statement}
-Vehicle routing problem is a classic problem first introduced by Dantzig and Ramser in 1959\cite{dantzig1959truck}. It is closely related to the even more well-known traveling salesman problem, first presented by Hassler Whitney in 1934\cite{flood1956traveling}. 
+The basic idea behind vehicle routing problem is that given a depot and a set of target locations, the depot must dispatch a number of vehicles so that each location is visited once and that the vehicles finally return to the depot. The total traveling cost should be minimised. Vehicle routing problem (VRP) is a classic problem first introduced by Dantzig and Ramser in 1959. \cite{dantzig1959truck} It is closely related to the even more well-known traveling salesman problem, first presented by Hassler Whitney in 1934 \cite{flood1956traveling}. 
 
-Traveling salesman problem is a special case of vehicle routing problem, where the number of vehicles is 1, there is no upper limit on the distance of a route and the capacity of the vehicle is greater than the combined requirement of all the nodes in the network. 
 
+The basic VRP can be defined with an graph $G = (V, A)$ where $V = \{v_1, v_2, v_3\dots\}$ represents the vertices, ie. the depot and targets for the visitations and $A = \{(v_i, v_j): i \neq j \}$ represents the arcs between the vertices. For every arc, there is a non-negative travel cost $C=(c_ij)$. In this context, it is used to represent the traveling time between vertices. If the travel cost is symmetric between all pairs of vertices, an undirected graph $G = (V, E)$ can be used instead, where $E=\{(i, j) : i, j \in V, i < j\}$. \cite{laporte2007you}
+
+The first vertex in $V$ represents the depot, where all the vehicles start from and where they must end their trips. $m$ identical vehicles have a capacity denoted by $Q$ which symbolises the resources available for each trip. In the classic VRP, $m$ is logically equivalent to the number of trips needed to visit every customer. With time windows this no longer holds true. Every customer vertex $i \in V\setminus\{0\}$ has a demand $q_i \leq Q$ associated with it. This symbolises the various resources, including time, required at the target. \cite{laporte2007you}
+
+Vehicle routing problem is NP-hard as it is a superset of the traveling salesman problem. In traveling salesman problem, the number of vehicles $m = 1$, there is no upper limit on the costs of a route and the capacity of the vehicle is greater than the combined requirement of all the nodes in the network ($Q = \infty$). \cite{laporte2007you} 
+
+Let $x_ij$ denote the number of trips made over the edge $[i, j]$ in a solution. The total cost that should be minimised is then:
+
+\begin{equation}
+\label{eq:baseformula1}
+\displaystyle \sum_{[i,j] \in E} c_{ij}x_{ij}
+\end{equation}
+
+\noindent
+The following conditions must hold true:
+
+\begin{equation}
+\label{eq:baseformula2}
+\displaystyle \sum_{j \in E \setminus\{0\}} x_{0j} = 2m
+\end{equation}
+
+\noindent
+Meaning that given $m$ trips, the sum of the trips made between the depot and other vertices is $2m$.
+
+
+\begin{equation}
+\begin{aligned}
+\label{eq:baseformula3}
+\displaystyle\sum_{i < k} x_{ik} + \displaystyle\sum_{j > k} x_{kj} = 2 && (k \in V \setminus\{0\})
+\end{aligned}
+\end{equation}
+
+\noindent
+Meaning that every vertex that is not the depot has two edges that are used in the solution. In other words, every non-depot vertex is visited exactly once.
+
+
+\begin{equation}
+\begin{aligned}
+\label{eq:baseformula4}
+\displaystyle\sum_{\substack{i \in S, j \notin S \\ 
+\text{ or } i \notin S, j \in S}} x_{ij} \geq 2b(S) && (S \subset V \setminus\{0\})
+\end{aligned}
+\end{equation}
+
+\noindent
+$b(S)$ represents the minimum number of vehicles required to satisfy the needs of the customers of $S$. This constraint means the number of edges travelled between the vertices in the network contained in S and the vertices of the rest of the network has to be at least 2 times the minimum number of vehicles required to satisfy the needs of the customers of $S$. 
+
+
+
+\begin{equation}
+\begin{aligned}
+\label{eq:baseformula5}
+x_{i,j} = 0 \text{ or } 1 && (i, j \in V \setminus\{0\})
+\end{aligned}
+\end{equation}
+
+
+\begin{equation}
+\begin{aligned}
+\label{eq:baseformula6}
+x_{0,j} = 0, 1 \text{ or } 2 && (j \in V \setminus\{0\})
+\end{aligned}
+\end{equation}
+
+
+\cite{laporte2007you}
+
+
+ 
 
 
 \section{Variations of the vehicle routing problem}
 \subsection{Vehicle routing problem with multiple depots}
-\subsection{Vehicle routing problem with pickup and delivery}
+
+\subsection{Heterogenous fleet vehicle routing problem (HVRP)}
+
+Because in real world scenarios, it is uncommon that all the vehicles in a fleet are identical, a typical variation of the VRP is one where the vehicles are not assumed to be identical. There is a fixed cost $f_t$ associated with each vehicle type $t$ and a variable cost per distance unit $g_t$. Vehicle types also have unique capacities, denoted by $Q_t$. \cite{gendreau1999tabu}
