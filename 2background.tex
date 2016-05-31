@@ -1,8 +1,8 @@
 \chapter{Vehicle routing problem introduction}
 \label{chapter:background} 
 
-\section{Problem statement}
-The basic idea behind vehicle routing problem is that given a depot and a set of target locations, the depot must dispatch a number of vehicles so that each location is visited once and that the vehicles finally return to the depot. The total traveling cost should be minimised. Vehicle routing problem (VRP) is a classic problem first introduced by Dantzig and Ramser in 1959. \cite{dantzig1959truck} It is closely related to the even more well-known traveling salesman problem, first presented by Hassler Whitney in 1934 \cite{flood1956traveling}. 
+\section{Classical vehicle routing problem}
+
 
 
 The basic VRP can be defined with an graph $G = (V, A)$ where $V = \{v_1, v_2, v_3\dots\}$ represents the vertices, ie. the depot and targets for the visitations and $A = \{(v_i, v_j): i \neq j \}$ represents the arcs between the vertices. For every arc, there is a non-negative travel cost $C=(c_ij)$. In this context, it is used to represent the traveling time between vertices. If the travel cost is symmetric between all pairs of vertices, an undirected graph $G = (V, E)$ can be used instead, where $E=\{(i, j) : i, j \in V, i < j\}$. \cite{laporte2007you}
@@ -57,7 +57,7 @@ $b(S)$ represents the minimum number of vehicles required to satisfy the needs o
 \begin{equation}
 \begin{aligned}
 \label{eq:baseformula5}
-x_{i,j} = 0 \text{ or } 1 && (i, j \in V \setminus\{0\})
+x_{i,j} = 0 \text{ or } 1 && (i, j \in V\setminus\{0\})
 \end{aligned}
 \end{equation}
 
@@ -65,18 +65,21 @@ x_{i,j} = 0 \text{ or } 1 && (i, j \in V \setminus\{0\})
 \begin{equation}
 \begin{aligned}
 \label{eq:baseformula6}
-x_{0,j} = 0, 1 \text{ or } 2 && (j \in V \setminus\{0\})
+x_{0,j} = 0, 1 \text{ or } 2 && (j \in V\setminus\{0\})
 \end{aligned}
 \end{equation}
 
+\noindent
+Meaning that every edge whose other end is the depot is travelled at most two times, while the rest of the edges are traveled once at most. \cite{laporte2007you}
 
-\cite{laporte2007you}
+
 
 
  
 
 
 \section{Variations of the vehicle routing problem}
+\subsection{Vehicle routing problem with time windows}
 \subsection{Vehicle routing problem with multiple depots}
 
 \subsection{Heterogenous fleet vehicle routing problem (HVRP)}

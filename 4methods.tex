@@ -13,7 +13,9 @@ One problem in the project is transforming the location data, mainly addresses, 
 
 Because the addresses of the customers are inputted by hand into the database of the client company, not all of them are valid. Some have typos, while others may have the wrong municipality due misinformation or the frequent merges in the country. To mitigate this problem, the user can re-enter the address in case the routing service does not recognise it. Another option is to group the job with already existing jobs.
 
-Choosing a suitable routing service is an important decision to be made in the early development. Generating the many-to-many traveling time matrix required in this project quickly cause an increase in the number of queries required. The licence fees which are typically based on the number of queries made within a time period must be kept reasonable.
+Choosing a suitable routing service is an important decision to be made in the early development. The way routing services work is that the user gives two addresses and the service responds with a recommended route to travel from the first address to the second. Additionally, they typically give the distance and traveling time estimate of the trip. The most important data to get from such a service is the time requirement of traveling between two addresses. This way it will be possible to turn address data into more abstract traveling cost matrix.
+
+Generating the many-to-many traveling time matrix required in this project requires a great number of queries. The licence fees of the routing services are typically based on the number of queries made within a time period. This means that the number of queries used in the program must be kept reasonable to keep the costs in check. The program should cache queried distances between addresses and group nearby locations together.
 
 Naturally the routing service has to support Finland's addresses and roadmap. Another important requirement is that it can estimate the traveling time between targets, because distance by itself is not very descriptive due to varying speed limits on different roads. Traffic congestion will probably be impossible to take into account because the driving will take place weeks into the future and also because the exact time and date are not known at the time of the query. 
 
@@ -22,24 +24,7 @@ One possible way to take congestion into account would be to redo the queries af
 
 \subsection{Calculating job costs}
 
-NOTE: number of technicians might always be one. This needs checking. Overall this is a very crude sketch of the subsection. 
-
-To prevent the algorithm from becoming overly complex, the time and resource requirements of a single job should be simplified as much as possible. The input:
-
-\begin{itemize}
-\item Types and number of tasks involved in the job
-\item Installation items and equipment required.
-\item Minimum number of technicians required.
-\item The assigned technician's performance if a specific technician is required for the job.   
-\end{itemize}
-
-The end result should be the following parameters per job target:
-
-\begin{itemize}
-\item Vehicle capacity requirements of the installation items and other equipment.
-\item Minimum number of technicians required at the job.
-\item Total time requirement for the technicians assuming that the number of technicians is the minimum number.  
-\end{itemize}
+As shown in section~\ref{subsection:dataconversion}, the raw data from the client company's database needs to be transformed into simple parameters for the algorithm. The goal is to minimise the loss of information important to the algorithm while also reducing the number of input parameter variables as much as possible.  
 
 Each task type has a unique time cost associated with it which is then adjusted with various factors. Different house types, floors and other environmental conditions affect on how much time is required per task. The type and size of item to be installed into the house also plays a role. 
 
