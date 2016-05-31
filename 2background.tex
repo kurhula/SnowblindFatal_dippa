@@ -5,7 +5,7 @@
 
 
 
-The basic VRP can be defined with an graph $G = (V, A)$ where $V = \{v_1, v_2, v_3\dots\}$ represents the vertices, ie. the depot and targets for the visitations and $A = \{(v_i, v_j): i \neq j \}$ represents the arcs between the vertices. For every arc, there is a non-negative travel cost $C=(c_ij)$. In this context, it is used to represent the traveling time between vertices. If the travel cost is symmetric between all pairs of vertices, an undirected graph $G = (V, E)$ can be used instead, where $E=\{(i, j) : i, j \in V, i < j\}$. \cite{laporte2007you}
+The basic VRP can be defined with an graph $G = (V, A)$ where $V = \{v_1, v_2, v_3\dots\}$ represents the vertices, ie. the depot and targets for the visitations and $A = \{(v_i, v_j): i \neq j \}$ represents the arcs between the vertices. For every arc, there is a non-negative travel cost $C=(c_{ij})$. In this context, it is used to represent the traveling time between vertices. If the travel cost is symmetric between all pairs of vertices, an undirected graph $G = (V, E)$ can be used instead, where $E=\{(i, j) : i, j \in V, i < j\}$. \cite{laporte2007you}
 
 The first vertex in $V$ represents the depot, where all the vehicles start from and where they must end their trips. $m$ identical vehicles have a capacity denoted by $Q$ which symbolises the resources available for each trip. In the classic VRP, $m$ is logically equivalent to the number of trips needed to visit every customer. With time windows this no longer holds true. Every customer vertex $i \in V\setminus\{0\}$ has a demand $q_i \leq Q$ associated with it. This symbolises the various resources, including time, required at the target. \cite{laporte2007you}
 
@@ -79,9 +79,28 @@ Meaning that every edge whose other end is the depot is travelled at most two ti
 
 
 \section{Variations of the vehicle routing problem}
+
+The real life needs of route planning are rarely satisfied with the basic vehicle routing problem. There are typically additional constraints and an increased complexity that require expanding the problem statement. The vehicles used are probably not identical in terms of capacity and cost. The number of depots might also be greater than 1 and each target has to be allocated to one of them. \cite{salhi2014multi} In addition, there might be specific time windows during which the targets have to be visited \cite{ghoseiri2010multi}. All of these additional features can be combined into a multitude of variations of the VRP. As all the variations add to the complexity of the VRP, they too are NP-hard.
+
 \subsection{Vehicle routing problem with time windows}
+
+Time windows and other scheduling constraints are common in real world and thus including them in VRP is crucial in order to get results that are applicable in common business cases. These can include postal, food or cargo delivery and service visits. Let $s_i$ denote the time that a vehicle has to spend at a target $i$ and $b_i$ denote the time at which the delivery of the service or goods begins. The earliest time the target accepts the start of the delivery is $e_i$ and the latest is $l_i$. If a vehicle arrives too early at $j$, it will have to wait so that the earliest time it can deliver the goods or services is $b_i = \max\{e_j, b_i + s_i + t_{ij}\}$. Here $t_{ij}$ represents the time required to travel between $i$ and $j$. \cite{solomon1987algorithms}
+
 \subsection{Vehicle routing problem with multiple depots}
 
 \subsection{Heterogenous fleet vehicle routing problem (HVRP)}
 
 Because in real world scenarios, it is uncommon that all the vehicles in a fleet are identical, a typical variation of the VRP is one where the vehicles are not assumed to be identical. There is a fixed cost $f_t$ associated with each vehicle type $t$ and a variable cost per distance unit $g_t$. Vehicle types also have unique capacities, denoted by $Q_t$. \cite{gendreau1999tabu}
+
+
+
+
+
+
+
+
+
+
+
+
+
