@@ -123,3 +123,49 @@ Due to the apparent need to cut down $CO^2$ emissions and the fact that the vast
 
 
 
+\section{VRP solutions}
+
+In this section I present some common algorithms to produce solutions to various VRPs. Because there are so many different types of VRP and each having its own set of solving methods, only the most common ones are listed here. In section~\ref{section:vrp_apply} I will more closely analyse which additional VRP features are required in the business case of this thesis. Then I will analyse which of these solutions methods will be most suitable to produce usable solutions.
+
+There are three main categories of VRP solving algorithms. The first category consists of algorithms that produce exact solutions. Due to the complexity of VRP, exact algorithms can only handle networks with up to about 100 nodes. This has resulted in the bulk of the research focusing on the two main types of heuristics: Classical heuristics and metaheuristics. \cite{laporte2007you}  
+
+Classical heuristics produce good results in reasonable computing time and cover the bulk of most modern heuristics in use. They are also easily suited for real world constraints and requirements. In metaheuristics, the most promising solution space is further explored. They employ advanced neighbourhood search patterns, memory structures and commonly use recombinations of solutions to find better ones. The downside is increased complexity and computational requirements, but they typically produce higher quality solutions. \cite{laporte2000classical}
+
+\subsection{Savings algorithm}
+
+The savings algorithm is one of the most basic algorithms for VRP. It assumes that the number of vehicles is a decision variable. 
+
+\bigskip
+\noindent
+Create one vehicle route per node so that the route just goes to the target and comes back to the depot. This will result in $n$ vehicle routes (0, $i$, 0) for $i = 1, \ldots, n$. \cite{reimann2004d}
+
+\medskip
+\noindent
+\textbf{Step 1:} Calculate \textit{savings}: $s_{ij} = c_{i0} + c_{0j} - c_{ij} \text{ for } i, j = 1, \ldots, n \text{ and } i \neq j$. Sort the savings in descending order. \cite{reimann2004d} At the top of the savings list are then pairs of targets who are farthest away from the depot and closest to each other. Essentially this gives us the clue that they should probably be merged into the same route. There are two common ways to use the savings list.
+
+
+\medskip
+\noindent
+\textbf{Step 2 (best savings first):} Starting from the top of the savings list, see if the routes can be merged so that the saving $s_{ij}$ causes the removal of $(0, j)$ and $(i, 0)$ and the addition of $(i, j)$. \cite{reimann2004d} This means that no routes will be cut in half during the algorithm, but that routes are merged from end to end, excluding the depot.
+
+\medskip
+\noindent
+\textbf{Step 2 (route first):} For each route $(0, i, \ldots, j, 0)$, find the first saving $s_{ki}$ or $s_{jl}$ that allows merging of another route that either ends with $(k, 0)$ or starts with $(0, l)$. Merge these two routes and continue the operation until no more feasible merges exist. Then move on to the next route and start all over again. \cite{laporte2000classical}
+
+
+
+\subsection{Sweep algorithm}
+
+Popularised by Gillet and Miller in 1974, the sweep algorithm is usable on data sets where the coordinates of the targets are known. It is based on calculating the polar coordinates between the depot and the targets so that one arbitarily chosen target represents the zero angle. The targets are then sorted according to the polar angle. The sorted targets are added in order to the new route until it is no longer possible to due route cost or capacity limits. Then a new route is created and the algorithm is repeated until all targets have been assigned to a route. \cite{gillett1974heuristic}
+
+The found routes are then optimised with any traveling salesman solver. Since the routes are supposedly relatively small at this point, solving the individual TSPs should be a lightweight operation. Once each route has been initially created and optimised, the algorithm then tries to swap neighbour routes' targets according to their distance from the depot and the angle to the next route. If the swap improves the solution, the target is moved to the other route. After no more improvements can be found through swapping, the algorithm finishes. \cite{gillett1974heuristic}
+
+The downside to this heuristic is that it doesn't take the road network into account during the sweep. It assumes that the geometrical distance is the most important piece of criteria. To counter this, it is typical to run the algorithm so that all targets get picked to be as the beginning point of the sweep. \cite{reimann2004d}  
+
+\subsection{Petal algorithm}
+
+
+\subsection{Tabu search}
+
+
+\subsection{Ant colony}
