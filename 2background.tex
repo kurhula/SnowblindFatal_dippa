@@ -9,7 +9,7 @@ The basic VRP can be defined with an graph $G = (V, A)$ where $V = \{v_1, v_2, v
 
 The first vertex in $V$ represents the depot, where all the vehicles start from and where they must end their trips. $m$ identical vehicles have a capacity denoted by $Q$ which symbolises the resources available for each trip. In the classic VRP, $m$ is logically equivalent to the number of trips needed to visit every customer. With time windows this no longer holds true. Every customer vertex $i \in V\setminus\{0\}$ has a demand $q_i \leq Q$ associated with it. This symbolises the various resources, including time, required at the target. \cite{laporte2007you}
 
-Vehicle routing problem is NP-hard as it is a superset of the traveling salesman problem. In traveling salesman problem, the number of vehicles $m = 1$, there is no upper limit on the costs of a route and the capacity of the vehicle is greater than the combined requirement of all the nodes in the network ($Q = \infty$). \cite{laporte2007you} 
+Vehicle routing problem is NP-hard as it is a superset of the traveling salesman problem. In traveling salesman problem, the number of vehicles $m = 1$, there is no upper limit on the costs of a route and the capacity of the vehicle is greater than the combined requirement of all the nodes in the network ($Q = \infty$). \cite{laporte2007you} The classic VRP is sometimes called the capacitated vehicle routing problem (CVRP). \cite{hassanzadeh2009location}
 
 Let $x_ij$ denote the number of trips made over the edge $[i, j]$ in a solution. The total cost that should be minimised is then:
 
@@ -27,7 +27,7 @@ The following conditions must hold true:
 \end{equation}
 
 \noindent
-Meaning that given $m$ trips, the sum of the trips made between the depot and other vertices is $2m$.
+Meaning that given $m$ trips, the sum of the trips made between the depot and other vertices is $2m$. \cite{laporte2007you}
 
 
 \begin{equation}
@@ -38,7 +38,7 @@ Meaning that given $m$ trips, the sum of the trips made between the depot and ot
 \end{equation}
 
 \noindent
-Meaning that every vertex that is not the depot has two edges that are used in the solution. In other words, every non-depot vertex is visited exactly once.
+Meaning that every vertex that is not the depot has two edges that are used in the solution. In other words, every non-depot vertex is visited exactly once. \cite{laporte2007you}
 
 
 \begin{equation}
@@ -50,7 +50,7 @@ Meaning that every vertex that is not the depot has two edges that are used in t
 \end{equation}
 
 \noindent
-$b(S)$ represents the minimum number of vehicles required to satisfy the needs of the customers of $S$. This constraint means the number of edges travelled between the vertices in the network contained in S and the vertices of the rest of the network has to be at least 2 times the minimum number of vehicles required to satisfy the needs of the customers of $S$. 
+$b(S)$ represents the minimum number of vehicles required to satisfy the needs of the customers of $S$. This constraint means the number of edges travelled between the vertices in the network contained in S and the vertices of the rest of the network has to be at least 2 times the minimum number of vehicles required to satisfy the needs of the customers of $S$. \cite{laporte2007you}
 
 
 
@@ -75,22 +75,15 @@ Meaning that every edge whose other end is the depot is travelled at most two ti
 
 
 
- 
+
 
 
 \section{Variations of the vehicle routing problem}
 
-The real life needs of route planning are rarely satisfied with the basic vehicle routing problem. There are typically additional constraints and an increased complexity that require expanding the problem statement. The vehicles used are probably not identical in terms of capacity and cost. The number of depots might also be greater than 1 and each target has to be allocated to one of them. \cite{salhi2014multi} In addition, there might be specific time windows during which the targets have to be visited \cite{ghoseiri2010multi}. All of these additional features can be combined into a multitude of variations of the VRP. As all the variations add to the complexity of the VRP, they too are NP-hard.
+The real life needs of route planning are rarely satisfied with the basic vehicle routing problem. There are typically additional constraints and an increased complexity that require expanding the problem statement. The vehicles used are probably not identical in terms of capacity and cost. The number of depots might also be greater than 1 and each target has to be allocated to one of them. \cite{salhi2014multi} In addition, there might be specific time windows during which the targets have to be visited \cite{ghoseiri2010multi}. 
 
-\subsection{Vehicle routing problem with time windows}
+All of these additional features can be combined into a multitude of variations of the VRP. As all the variations add to the complexity of the VRP, they too are NP-hard. The variations listed here represent the most common types of VRP, but in addition, there are more specific types still available, such as one where only certain types of vehicles may visit certain targets. \cite{montoya2015literature} 
 
-Time windows and other scheduling constraints are common in real world and thus including them in VRP is crucial in order to get results that are applicable in common business cases. These can include postal, food or cargo delivery and service visits where it is common that the customer wants the delivery to occur during a specific time. \cite{cordeau2000vrp}
-
-To define vehicle routing problem with time windows (VRPTW), let $s_i$ denote the time that a vehicle has to spend at a target $i$ and $b_i$ denote the time at which the delivery of the service or goods begins. The earliest time the target accepts the start of the delivery is $e_i$ and the latest is $l_i$. If a vehicle arrives too early at $j$, it will have to wait so that the earliest time it can deliver the goods or services is $b_i = \max\{e_j, b_i + s_i + t_{ij}\}$. Here $t_{ij}$ represents the time required to travel between $i$ and $j$. \cite{solomon1987algorithms}
-
-\subsection{Periodic vehicle routing problem}
-
-While the classic VRP assumes a single time period, a single day for example, during which a deliveries have to be made, periodic vehicle routing problem (PVRP) defines a case with repeating time windows. Customers may need to be visited once or multiple times, and they may require the visit to occur on a specific weekday. \cite{blakeley2003optimizing} Common applications for the PVRP include waste collection, vending machine replenishment and cleaning service. PVRP is commonly combined with VRPTW as it is likely that in addition to wanting the visit to take place on a specific day, the customers also have requirements regarding the time of the visit. \cite{yu2011ant}
 
 \subsection{Multi-depot Vehicle routing problem}
 
@@ -101,14 +94,32 @@ Multi-depot Vehicle routing problem (MDVRP) is a variation of VRP where there ar
 
 In real world scenarios, it is uncommon that all the vehicles in a fleet are identical. A typical variation of the VRP called heterogenous fleet vehicle routing problem (HVRP) one where the vehicles are not assumed to be identical. There is a fixed cost $f_t$ associated with each vehicle type $t$ and a variable cost per distance unit $g_t$. Vehicle types also have unique capacities, denoted by $Q_t$. \cite{gendreau1999tabu}
 
+
 \subsection{Vehicle routing problem with pickup and delivery}
 
 Vehicle routing problem with pickup and delivery (VRPPD) defines a VRP where a set of transportation requests must be satisfied. The requests all have a pickup point and a delivery point where the goods or passenger has to be brought. In case of passengers, a common application in real life can be found in taxi service. A courier service would be an example of a scenario where goods need to be transported from one point to another. Due to the nature of the applications for VRPPD, it is usually combined with VRPTW. The standard VRP is a VRPPD where the pickup point is always the depot and the delivery points are spread out elsewhere or vice versa. \cite{desaulniers2000vrp}
 
 
+\subsection{Vehicle routing problem with time windows}
+
+Time windows and other scheduling constraints are common in real world and thus including them in VRP is crucial in order to get results that are applicable in common business cases. These can include postal, food or cargo delivery and service visits where it is common that the customer wants the delivery to occur during a specific time. \cite{cordeau2000vrp}
+
+To define vehicle routing problem with time windows (VRPTW), let $s_i$ denote the time that a vehicle has to spend at a target $i$ and $b_i$ denote the time at which the delivery of the service or goods begins. The earliest time the target accepts the start of the delivery is $e_i$ and the latest is $l_i$. If a vehicle arrives too early at $j$, it will have to wait so that the earliest time it can deliver the goods or services is $b_i = \max\{e_j, b_i + s_i + t_{ij}\}$. Here $t_{ij}$ represents the time required to travel between $i$ and $j$. \cite{solomon1987algorithms}
 
 
+\subsection{Periodic vehicle routing problem}
 
+While the classic VRP assumes a single time period, a single day for example, during which a deliveries have to be made, periodic vehicle routing problem (PVRP) defines a case with repeating time windows. Customers may need to be visited once or multiple times, and they may require the visit to occur on a specific weekday. \cite{blakeley2003optimizing} Common applications for the PVRP include waste collection, vending machine replenishment and cleaning service. PVRP is commonly combined with VRPTW as it is likely that in addition to wanting the visit to take place on a specific day, the customers also have requirements regarding the time of the visit. \cite{yu2011ant}
+
+
+\subsection{Location routing problem}
+
+In location routing problem (LRP), the location of the depots has to be determined before creating the routes. The factors that have to be taken into account are the one time and running costs of the depots and the traveling costs that are based on the locations of the depots. The main objective is to position the depots as close to the customers as possible. In practice, the maximum size of the depot is also limited. A large depot in a city centrum might incur too large costs in order to be feasible. Once the locations of the depots has been decided, the problem turns into a multi-depot vehicle routing problem, though naturally the positions can be altered at any point during the solving. \cite{tuzun1999two}
+
+
+\subsection{Green vehicle routing problem}
+
+Due to the apparent need to cut down $CO^2$ emissions and the fact that the vast majority of vehicles, especially heavy transport, run on fossil fuels, there is an increasing motivation to pay more attention to the environmental aspects of transportation. Green vehicle routing problem (GVRP, also known as emissions vehicle routing problem) aims to minimise emissions and helps routing for vehicles that may require special fueling stations. \cite{erdougan2012green}
 
 
 
