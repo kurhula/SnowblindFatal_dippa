@@ -84,18 +84,26 @@ The real life needs of route planning are rarely satisfied with the basic vehicl
 
 \subsection{Vehicle routing problem with time windows}
 
-Time windows and other scheduling constraints are common in real world and thus including them in VRP is crucial in order to get results that are applicable in common business cases. These can include postal, food or cargo delivery and service visits. Let $s_i$ denote the time that a vehicle has to spend at a target $i$ and $b_i$ denote the time at which the delivery of the service or goods begins. The earliest time the target accepts the start of the delivery is $e_i$ and the latest is $l_i$. If a vehicle arrives too early at $j$, it will have to wait so that the earliest time it can deliver the goods or services is $b_i = \max\{e_j, b_i + s_i + t_{ij}\}$. Here $t_{ij}$ represents the time required to travel between $i$ and $j$. \cite{solomon1987algorithms}
+Time windows and other scheduling constraints are common in real world and thus including them in VRP is crucial in order to get results that are applicable in common business cases. These can include postal, food or cargo delivery and service visits where it is common that the customer wants the delivery to occur during a specific time. \cite{cordeau2000vrp}
 
-\subsection{Vehicle routing problem with multiple depots}
+To define vehicle routing problem with time windows (VRPTW), let $s_i$ denote the time that a vehicle has to spend at a target $i$ and $b_i$ denote the time at which the delivery of the service or goods begins. The earliest time the target accepts the start of the delivery is $e_i$ and the latest is $l_i$. If a vehicle arrives too early at $j$, it will have to wait so that the earliest time it can deliver the goods or services is $b_i = \max\{e_j, b_i + s_i + t_{ij}\}$. Here $t_{ij}$ represents the time required to travel between $i$ and $j$. \cite{solomon1987algorithms}
 
-\subsection{Heterogenous fleet vehicle routing problem (HVRP)}
+\subsection{Periodic vehicle routing problem}
 
-Because in real world scenarios, it is uncommon that all the vehicles in a fleet are identical, a typical variation of the VRP is one where the vehicles are not assumed to be identical. There is a fixed cost $f_t$ associated with each vehicle type $t$ and a variable cost per distance unit $g_t$. Vehicle types also have unique capacities, denoted by $Q_t$. \cite{gendreau1999tabu}
+While the classic VRP assumes a single time period, a single day for example, during which a deliveries have to be made, periodic vehicle routing problem (PVRP) defines a case with repeating time windows. Customers may need to be visited once or multiple times, and they may require the visit to occur on a specific weekday. \cite{blakeley2003optimizing} Common applications for the PVRP include waste collection, vending machine replenishment and cleaning service. PVRP is commonly combined with VRPTW as it is likely that in addition to wanting the visit to take place on a specific day, the customers also have requirements regarding the time of the visit. \cite{yu2011ant}
+
+\subsection{Multi-depot Vehicle routing problem}
+
+Multi-depot Vehicle routing problem (MDVRP) is a variation of VRP where there are additional depots which can be utilised as the start and end points of routes. A vehicle must start and end the route at the same depot. While at first it might seem that MDVRP can be just split into multiple single depot VRPs by assigning each target to the nearest depot, this leads to suboptimal solutions. \cite {salhi2014multi}
 
 
+\subsection{Heterogenous fleet vehicle routing problem}
 
+In real world scenarios, it is uncommon that all the vehicles in a fleet are identical. A typical variation of the VRP called heterogenous fleet vehicle routing problem (HVRP) one where the vehicles are not assumed to be identical. There is a fixed cost $f_t$ associated with each vehicle type $t$ and a variable cost per distance unit $g_t$. Vehicle types also have unique capacities, denoted by $Q_t$. \cite{gendreau1999tabu}
 
+\subsection{Vehicle routing problem with pickup and delivery}
 
+Vehicle routing problem with pickup and delivery (VRPPD) defines a VRP where a set of transportation requests must be satisfied. The requests all have a pickup point and a delivery point where the goods or passenger has to be brought. In case of passengers, a common application in real life can be found in taxi service. A courier service would be an example of a scenario where goods need to be transported from one point to another. Due to the nature of the applications for VRPPD, it is usually combined with VRPTW. The standard VRP is a VRPPD where the pickup point is always the depot and the delivery points are spread out elsewhere or vice versa. \cite{desaulniers2000vrp}
 
 
 
