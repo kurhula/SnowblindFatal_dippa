@@ -131,6 +131,8 @@ There are three main categories of VRP solving algorithms. The first category co
 
 Classical heuristics produce good results in reasonable computing time and cover the bulk of most modern heuristics in use. They are also easily suited for real world constraints and requirements. In metaheuristics, the most promising solution space is further explored. They employ advanced neighbourhood search patterns, memory structures and commonly use recombinations of solutions to find better ones. The downside is increased complexity and computational requirements, but they typically produce higher quality solutions. \cite{laporte2000classical}
 
+
+
 \subsection{Savings algorithm}
 
 The savings algorithm is one of the most basic algorithms for VRP. It assumes that the number of vehicles is a decision variable. 
@@ -154,18 +156,59 @@ Create one vehicle route per node so that the route just goes to the target and 
 
 
 
-\subsection{Sweep algorithm}
+\subsection{Sweep algorithm}			
 
 Popularised by Gillet and Miller in 1974, the sweep algorithm is usable on data sets where the coordinates of the targets are known. It is based on calculating the polar coordinates between the depot and the targets so that one arbitarily chosen target represents the zero angle. The targets are then sorted according to the polar angle. The sorted targets are added in order to the new route until it is no longer possible to due route cost or capacity limits. Then a new route is created and the algorithm is repeated until all targets have been assigned to a route. \cite{gillett1974heuristic}
 
 The found routes are then optimised with any traveling salesman solver. Since the routes are supposedly relatively small at this point, solving the individual TSPs should be a lightweight operation. Once each route has been initially created and optimised, the algorithm then tries to swap neighbour routes' targets according to their distance from the depot and the angle to the next route. If the swap improves the solution, the target is moved to the other route. After no more improvements can be found through swapping, the algorithm finishes. \cite{gillett1974heuristic}
 
-The downside to this heuristic is that it doesn't take the road network into account during the sweep. It assumes that the geometrical distance is the most important piece of criteria. To counter this, it is typical to run the algorithm so that all targets get picked to be as the beginning point of the sweep. \cite{reimann2004d}  
+The downside to this heuristic is that it doesn't take the road network into account during the sweep. It assumes that the geometrical distance is the most important piece of criteria. To counter this, it is typical to run the algorithm so that all targets get picked to be as the beginning point of the sweep. \cite{reimann2004d} 
+
+
+% TODO: Add picture
 
 \subsection{Petal algorithm}
 
+The petal algorithm resembles the sweep algorithm, as all the targets are first sorted according to their polar angle from the depot and an arbitarily chosen point. A set $S$ of possible routes called petals is then generated and optimised using TSP as above. The problem is then formulated as follows:
+
+
+\bigskip
+\noindent
+Minimise
+
+\begin{equation}
+\label{eq:petal1}
+\displaystyle\sum_{\substack{k \in S}} d_kx_k
+\end{equation}
+
+
+\noindent
+So that
+
+\begin{equation}
+\begin{aligned}
+\label{eq:petal2}
+\displaystyle\sum_{\substack{k \in S}} d_{ik}x_k = 1 && i = 1, \ldots, n
+\end{aligned}
+\end{equation}
+
+\begin{equation}
+\begin{aligned}
+\label{eq:petal3}
+x_{k} = 0 \text{ or } 1 && k \in S
+\end{aligned}
+\end{equation}
+
+Where $S$ is the set of all routes in the set, $x_k = 1$ if and only if route k is part of the solution, $a_{ik}$ is 1 only if the vertex $i$ is in the route $k$ and $d_k$ represents the cost of the whole route $k$. \cite{laporte2000classical} The Sweep and petal algorithms are classic examples of ``cluster-fist route-second'' types of algorithms, where first the targets are grouped and then for those groups, the optimal routes are discovered. 
+
+\subsection{2-petal algorithm}
 
 \subsection{Tabu search}
 
+\subsection{Greedy Randomized Adaptive Search Procedure (GRASP)}
+
+\subsection{Genetic algorithm}
 
 \subsection{Ant colony}
+
+\subsection{Bee colony}
