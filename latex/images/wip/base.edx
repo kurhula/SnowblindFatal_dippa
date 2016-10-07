@@ -1,0 +1,784 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Document Version="7.9" DocGuid="012C400C-87B1-4267-B638-A583414FBD45">
+	<DocProps>
+		<DocConfig>
+			<ConLineJumpCode>7</ConLineJumpCode>
+			<ConLineJumpStyle>1</ConLineJumpStyle>
+			<ConLineJumpDirX>1</ConLineJumpDirX>
+			<ConLineJumpDirY>2</ConLineJumpDirY>
+			<ConLineJumpSize>6</ConLineJumpSize>
+			<DefaultQuickFmt>22</DefaultQuickFmt>
+			<SGD>503</SGD>
+			<SolMask>0</SolMask>
+			<ShowGrid>FALSE</ShowGrid>
+			<ShowRuler>TRUE</ShowRuler>
+			<ShowGuideline>TRUE</ShowGuideline>
+			<ShowPageBreak>TRUE</ShowPageBreak>
+			<AutoPageSize>TRUE</AutoPageSize>
+			<PageScale>1.5</PageScale>
+			<PageMarginLeft>5</PageMarginLeft>
+			<PageMarginRight>5</PageMarginRight>
+			<PageMarginTop>5</PageMarginTop>
+			<PageMarginBottom>5</PageMarginBottom>
+			<PageMarginUnit>10001</PageMarginUnit>
+			<OrgAutoLayout>FALSE</OrgAutoLayout>
+			<mmAutoLayout>TRUE</mmAutoLayout>
+			<mmLockCon>TRUE</mmLockCon>
+		</DocConfig>
+		<ActivePageIndex>0</ActivePageIndex>
+		<Stencils>
+			<Stencil>\library\Mind Map\Mind Shapes.edt</Stencil>
+		</Stencils>
+		<PrintConfig>
+			<Name>A4 sheet, 210 mm x 297 mm</Name>
+			<Portrait>FALSE</Portrait>
+			<ShowGrid>FALSE</ShowGrid>
+			<ShowGuideline>FALSE</ShowGuideline>
+			<FittoSheet>FALSE</FittoSheet>
+			<Zoom>1</Zoom>
+			<SheetNumX>1</SheetNumX>
+			<SheetNumY>1</SheetNumY>
+			<AutoFitPage>TRUE</AutoFitPage>
+		</PrintConfig>
+		<Theme Name="General" PreDefine="TRUE" Default="TRUE">
+			<ThemeColor Name="General" ID="4" PreDefine="TRUE" White="#FFFFFFFF" Black="#FF000000" Background="#FFD2CEB2" Fill="#FF98B4D8" Line="#FFBBBBBB" Accent1="#FFDA9A98" Accent2="#FFC6D8A0" Accent3="#FFB3A2C8" Accent4="#FF98CFDE" Accent5="#FFF9B881" Shadow="#66000000" Text="#FF000000"/>
+			<ThemeEffect Name="General" PreDefine="TRUE" Variant="2">
+				<ShapeFormat QuickMask="-1">
+					<FillFormat Type="Solid">
+						<Color Value="#FFFFFFFF"/>
+					</FillFormat>
+					<LineFormat>
+						<LineWeight>1</LineWeight>
+						<LineCap>0</LineCap>
+						<LinePattern>1</LinePattern>
+						<Rounding>1</Rounding>
+						<BeginArrowID>0</BeginArrowID>
+						<BeginArrowSize>4</BeginArrowSize>
+						<EndArrowID>0</EndArrowID>
+						<EndArrowSize>4</EndArrowSize>
+						<LineFill Type="Solid">
+							<Color Value="#FF808080" ThemeColor="5" Shade="35"/>
+						</LineFill>
+					</LineFormat>
+					<EffectFormat>
+						<Shadow Mode="0"/>
+					</EffectFormat>
+				</ShapeFormat>
+				<ShapeFormat QuickMask="-1">
+					<FillFormat Type="Solid">
+						<Color Value="#FFF4F4F4" ThemeColor="5" Tint="80"/>
+					</FillFormat>
+					<LineFormat>
+						<LineWeight>1</LineWeight>
+						<LineCap>0</LineCap>
+						<LinePattern>1</LinePattern>
+						<Rounding>1</Rounding>
+						<BeginArrowID>0</BeginArrowID>
+						<BeginArrowSize>4</BeginArrowSize>
+						<EndArrowID>0</EndArrowID>
+						<EndArrowSize>4</EndArrowSize>
+						<LineFill Type="Solid">
+							<Color Value="#FF6C6C6C" ThemeColor="5" Shade="45"/>
+						</LineFill>
+					</LineFormat>
+					<EffectFormat>
+						<Shadow Mode="0"/>
+					</EffectFormat>
+				</ShapeFormat>
+				<ShapeFormat QuickMask="-1">
+					<FillFormat Type="Solid">
+						<Color Value="#FFC6C6C6" ThemeColor="5"/>
+					</FillFormat>
+					<LineFormat>
+						<LineWeight>2</LineWeight>
+						<LineCap>0</LineCap>
+						<LinePattern>1</LinePattern>
+						<Rounding>1</Rounding>
+						<BeginArrowID>0</BeginArrowID>
+						<BeginArrowSize>4</BeginArrowSize>
+						<EndArrowID>0</EndArrowID>
+						<EndArrowSize>4</EndArrowSize>
+						<LineFill Type="Solid">
+							<Color Value="#FFFFFFFF"/>
+						</LineFill>
+					</LineFormat>
+					<EffectFormat>
+						<Shadow Mode="14" Scale="1" OffsetX="1" OffsetY="2" Angle="0" Blur="3">
+							<Color Value="#66000000"/>
+						</Shadow>
+					</EffectFormat>
+				</ShapeFormat>
+				<ShapeFormat QuickMask="-1">
+					<FillFormat Type="Gradient" GradientType="Linear" StopNum="3" Direction="90">
+						<Stop>
+							<Color Value="#FFFCFCFC" ThemeColor="5" Tint="95"/>
+							<Offset>0</Offset>
+						</Stop>
+						<Stop>
+							<Color Value="#FFF5F5F5" ThemeColor="5" Tint="85"/>
+							<Offset>0.5</Offset>
+						</Stop>
+						<Stop>
+							<Color Value="#FFEEEEEE" ThemeColor="5" Tint="75"/>
+							<Offset>1</Offset>
+						</Stop>
+					</FillFormat>
+					<LineFormat>
+						<LineWeight>1</LineWeight>
+						<LineCap>0</LineCap>
+						<LinePattern>1</LinePattern>
+						<Rounding>1</Rounding>
+						<BeginArrowID>0</BeginArrowID>
+						<BeginArrowSize>4</BeginArrowSize>
+						<EndArrowID>0</EndArrowID>
+						<EndArrowSize>4</EndArrowSize>
+						<LineFill Type="Solid">
+							<Color Value="#FF595959" ThemeColor="5" Shade="55"/>
+						</LineFill>
+					</LineFormat>
+					<EffectFormat>
+						<Shadow Mode="14" Scale="1" OffsetX="2" OffsetY="2" Angle="0" Blur="0">
+							<Color Value="#80BEBEBE"/>
+						</Shadow>
+					</EffectFormat>
+				</ShapeFormat>
+				<ShapeFormat QuickMask="-1">
+					<FillFormat Type="Gradient" GradientType="Linear" StopNum="3" Direction="90">
+						<Stop>
+							<Color Value="#FFEEEEEE" ThemeColor="5" Tint="70"/>
+							<Offset>0</Offset>
+						</Stop>
+						<Stop>
+							<Color Value="#FFE3E3E3" ThemeColor="5" Tint="50"/>
+							<Offset>0.5</Offset>
+						</Stop>
+						<Stop>
+							<Color Value="#FFD7D7D7" ThemeColor="5" Tint="30"/>
+							<Offset>1</Offset>
+						</Stop>
+					</FillFormat>
+					<LineFormat>
+						<LineWeight>1</LineWeight>
+						<LineCap>0</LineCap>
+						<LinePattern>1</LinePattern>
+						<Rounding>1</Rounding>
+						<BeginArrowID>0</BeginArrowID>
+						<BeginArrowSize>4</BeginArrowSize>
+						<EndArrowID>0</EndArrowID>
+						<EndArrowSize>4</EndArrowSize>
+						<LineFill Type="Solid">
+							<Color Value="#FF595959" ThemeColor="5" Shade="55"/>
+						</LineFill>
+					</LineFormat>
+					<EffectFormat>
+						<Shadow Mode="0"/>
+					</EffectFormat>
+				</ShapeFormat>
+				<ShapeFormat QuickMask="-1">
+					<FillFormat Type="Gradient" GradientType="Linear" StopNum="3" Direction="90">
+						<Stop>
+							<Color Value="#FFCCCCCC" ThemeColor="5" Tint="10"/>
+							<Offset>0</Offset>
+						</Stop>
+						<Stop>
+							<Color Value="#FFA8A8A8" ThemeColor="5" Shade="15"/>
+							<Offset>0.5</Offset>
+						</Stop>
+						<Stop>
+							<Color Value="#FF767676" ThemeColor="5" Shade="40"/>
+							<Offset>1</Offset>
+						</Stop>
+					</FillFormat>
+					<LineFormat>
+						<LineWeight>1</LineWeight>
+						<LineCap>0</LineCap>
+						<LinePattern>1</LinePattern>
+						<Rounding>1</Rounding>
+						<BeginArrowID>0</BeginArrowID>
+						<BeginArrowSize>4</BeginArrowSize>
+						<EndArrowID>0</EndArrowID>
+						<EndArrowSize>4</EndArrowSize>
+						<LineFill Type="Solid">
+							<Color Value="#FF595959" ThemeColor="5" Shade="55"/>
+						</LineFill>
+					</LineFormat>
+					<EffectFormat>
+						<Shadow Mode="14" Scale="1" OffsetX="2" OffsetY="2" Angle="0" Blur="3">
+							<Color Value="#66000000"/>
+						</Shadow>
+					</EffectFormat>
+				</ShapeFormat>
+				<ShapeFormat QuickMask="-1">
+					<FillFormat Type="Solid">
+						<Color Value="#FFFFFFFF"/>
+					</FillFormat>
+					<LineFormat>
+						<LineWeight>1</LineWeight>
+						<LineCap>0</LineCap>
+						<LinePattern>1</LinePattern>
+						<Rounding>1</Rounding>
+						<BeginArrowID>0</BeginArrowID>
+						<BeginArrowSize>3</BeginArrowSize>
+						<EndArrowID>4</EndArrowID>
+						<EndArrowSize>3</EndArrowSize>
+						<LineFill Type="Solid">
+							<Color Value="#FF595959" ThemeColor="5" Shade="55"/>
+						</LineFill>
+					</LineFormat>
+					<EffectFormat>
+						<Shadow Mode="0"/>
+					</EffectFormat>
+				</ShapeFormat>
+			</ThemeEffect>
+			<ThemeText Name="Arial" PreDefine="TRUE" Variant="2">
+				<TextFormat>
+					<TextFormatMask>0</TextFormatMask>
+					<FontFamily>Arial</FontFamily>
+					<FontWeight>400</FontWeight>
+					<FontHeight>10</FontHeight>
+					<FontItalic>FALSE</FontItalic>
+					<FontUnderline>FALSE</FontUnderline>
+					<FontStrikeout>FALSE</FontStrikeout>
+					<AlignHorizontal>Center</AlignHorizontal>
+					<AlignVertical>Middle</AlignVertical>
+					<Color Value="#FF000000"/>
+					<FontOffset>0</FontOffset>
+					<FontBackColor>#FFFEFD</FontBackColor>
+					<FontBullet>0</FontBullet>
+					<LeftOffset>0</LeftOffset>
+					<StartIndent>50</StartIndent>
+					<RightIndent>50</RightIndent>
+					<LineSpace>20</LineSpace>
+					<SpaceBefore>0</SpaceBefore>
+					<SpaceAfter>0</SpaceAfter>
+				</TextFormat>
+				<FontSchemeLst>
+					<FontScheme FontName="Arial" FontSize="10" Flag="0">
+						<Color Value="#FF000000"/>
+						<BackgndColor Value="#FFFFFEFD"/>
+					</FontScheme>
+					<FontScheme FontName="Arial" FontSize="10" Flag="0">
+						<Color Value="#FF000000"/>
+						<BackgndColor Value="#FFFFFEFD"/>
+					</FontScheme>
+					<FontScheme FontName="Arial" FontSize="10" Flag="0">
+						<Color Value="#FF000000"/>
+						<BackgndColor Value="#FFFFFEFD"/>
+					</FontScheme>
+					<FontScheme FontName="Arial" FontSize="10" Flag="0">
+						<Color Value="#FF000000"/>
+						<BackgndColor Value="#FFFFFEFD"/>
+					</FontScheme>
+					<FontScheme FontName="Arial" FontSize="10" Flag="0">
+						<Color Value="#FF000000"/>
+						<BackgndColor Value="#FFFFFEFD"/>
+					</FontScheme>
+					<FontScheme FontName="Arial" FontSize="10" Flag="0">
+						<Color Value="#FF000000"/>
+						<BackgndColor Value="#FFFFFEFD"/>
+					</FontScheme>
+					<FontScheme FontName="Arial" FontSize="10" Flag="0">
+						<Color Value="#FF000000"/>
+						<BackgndColor Value="#FFFFFEFF"/>
+					</FontScheme>
+				</FontSchemeLst>
+			</ThemeText>
+		</Theme>
+		<WaterMark Type="None"/>
+	</DocProps>
+	<Page Type="Page" Name="Page-1" Zoom="17.5" ZoomUI="16.7313" Unit="mm" PrePaper="13" ID="100">
+		<PageProps mmTheme="2">
+			<Width>1188</Width>
+			<Height>840</Height>
+			<CustWidth>297</CustWidth>
+			<CustHeight>210</CustHeight>
+			<PageBreakWidth>1188</PageBreakWidth>
+			<PageBreakHeight>840</PageBreakHeight>
+			<PageBreakLeft>0</PageBreakLeft>
+			<PageBreakTop>0</PageBreakTop>
+			<PageBreakRight>1</PageBreakRight>
+			<PageBreakBottom>1</PageBreakBottom>
+			<ScrollX>6414</ScrollX>
+			<ScrollY>5313</ScrollY>
+			<BackColor>#FFFFFFFF</BackColor>
+			<GridColor>#FFB4B4B4</GridColor>
+			<GridSpace>1</GridSpace>
+			<GridRealSpace>35</GridRealSpace>
+			<GridSubGrid>2</GridSubGrid>
+			<GridStyle>3</GridStyle>
+		</PageProps>
+		<Layout>
+			<Solution>503</Solution>
+			<NumbLevel>0</NumbLevel>
+			<mmMajor>20</mmMajor>
+			<mmMinor>10</mmMinor>
+			<OrgVerDist>16</OrgVerDist>
+			<OrgHorDist>16</OrgHorDist>
+			<OrgHorAss>8</OrgHorAss>
+			<HpScale>50</HpScale>
+			<HpPrecistion>00</HpPrecistion>
+			<HpDispMode>0</HpDispMode>
+		</Layout>
+		<Layer Type="Layer" NameU="Background" Name="Background" Background="TRUE" ID="101"/>
+		<Layer Type="Layer" NameU="Layer-1" Name="Layer-1" ID="102">
+			<Shape Type="Rectangle" NameU="Rectangle" Name="Rectangle" ID="105">
+				<Transform>
+					<Width>68</Width>
+					<Height>52</Height>
+					<Angle>0</Angle>
+					<GPinX>378</GPinX>
+					<GPinY>308</GPinY>
+					<LocPinX F="Width*0.5" R="0.5" M="1">34</LocPinX>
+					<LocPinY F="Height*0.5" R="0.5" M="2">26</LocPinY>
+					<FlipX>0</FlipX>
+					<FlipY>0</FlipY>
+				</Transform>
+				<CPoints>
+					<CPoint Name="Pt1" ID="1" Type="0">
+						<X>0</X>
+						<Y F="Height*0.5" R="0.5" M="2">26</Y>
+					</CPoint>
+					<CPoint Name="Pt2" ID="2" Type="0">
+						<X F="Width*0.5" R="0.5" M="1">34</X>
+						<Y>0</Y>
+					</CPoint>
+					<CPoint Name="Pt3" ID="3" Type="0">
+						<X F="Width*1" R="1" M="1">68</X>
+						<Y F="Height*0.5" R="0.5" M="2">26</Y>
+					</CPoint>
+					<CPoint Name="Pt4" ID="4" Type="0">
+						<X F="Width*0.5" R="0.5" M="1">34</X>
+						<Y F="Height*1" R="1" M="2">52</Y>
+					</CPoint>
+					<CPoint Name="Pt5" ID="5" Type="0">
+						<X F="Width*1" R="1" M="1">67.9429</X>
+						<Y F="Height*0.00109863" R="0.00109863" M="2">0.0571289</Y>
+					</CPoint>
+					<CPoint Name="Pt6" ID="6" Type="0">
+						<X F="Width*1" R="1" M="1">68</X>
+						<Y F="Height*0.130769" R="0.130769" M="2">6.79999</Y>
+					</CPoint>
+					<CPoint Name="Pt7" ID="7" Type="0">
+						<X F="Width*1" R="1" M="1">68</X>
+						<Y F="Height*0.253846" R="0.253846" M="2">13.2</Y>
+					</CPoint>
+					<CPoint Name="Pt8" ID="8" Type="0">
+						<X F="Width*1" R="1" M="1">68.0571</X>
+						<Y F="Height*0.38022" R="0.38022" M="2">19.7714</Y>
+					</CPoint>
+					<CPoint Name="Pt9" ID="9" Type="0">
+						<X F="Width*1" R="1" M="1">67.9429</X>
+						<Y F="Height*0.61978" R="0.61978" M="2">32.2286</Y>
+					</CPoint>
+					<CPoint Name="Pt10" ID="10" Type="0">
+						<X F="Width*1" R="1" M="1">68</X>
+						<Y F="Height*0.738461" R="0.738461" M="2">38.4</Y>
+					</CPoint>
+					<CPoint Name="Pt11" ID="11" Type="0">
+						<X F="Width*1" R="1" M="1">68.0571</X>
+						<Y F="Height*0.85934" R="0.85934" M="2">44.6857</Y>
+					</CPoint>
+					<CPoint Name="Pt12" ID="12" Type="0">
+						<X F="Width*1" R="1" M="1">68</X>
+						<Y F="Height*0.996704" R="0.996704" M="2">51.8286</Y>
+					</CPoint>
+					<CPoint Name="Pt13" ID="13" Type="0">
+						<X F="Width*0.905042" R="0.905042" M="1">61.5428</X>
+						<Y F="Height*1.0011" R="1.0011" M="2">52.0571</Y>
+					</CPoint>
+					<CPoint Name="Pt14" ID="14" Type="0">
+						<X F="Width*0.813446" R="0.813446" M="1">55.3143</X>
+						<Y F="Height*1.0011" R="1.0011" M="2">52.0571</Y>
+					</CPoint>
+					<CPoint Name="Pt15" ID="15" Type="0">
+						<X F="Width*0.710925" R="0.710925" M="1">48.3429</X>
+						<Y F="Height*1" R="1" M="2">52</Y>
+					</CPoint>
+					<CPoint Name="Pt16" ID="16" Type="0">
+						<X F="Width*0.607563" R="0.607563" M="1">41.3143</X>
+						<Y F="Height*1" R="1" M="2">52</Y>
+					</CPoint>
+					<CPoint Name="Pt17" ID="17" Type="0">
+						<X F="Width*0.407563" R="0.407563" M="1">27.7143</X>
+						<Y F="Height*1" R="1" M="2">52</Y>
+					</CPoint>
+					<CPoint Name="Pt18" ID="18" Type="0">
+						<X F="Width*0.310924" R="0.310924" M="1">21.1429</X>
+						<Y F="Height*1" R="1" M="2">52</Y>
+					</CPoint>
+					<CPoint Name="Pt19" ID="19" Type="0">
+						<X F="Width*0.221849" R="0.221849" M="1">15.0857</X>
+						<Y F="Height*1" R="1" M="2">52</Y>
+					</CPoint>
+					<CPoint Name="Pt20" ID="20" Type="0">
+						<X F="Width*0.121008" R="0.121008" M="1">8.22858</X>
+						<Y F="Height*1.0011" R="1.0011" M="2">52.0571</Y>
+					</CPoint>
+					<CPoint Name="Pt21" ID="21" Type="0">
+						<X>0.0571289</X>
+						<Y F="Height*1" R="1" M="2">52</Y>
+					</CPoint>
+					<CPoint Name="Pt22" ID="22" Type="0">
+						<X>0.0571289</X>
+						<Y F="Height*0.881319" R="0.881319" M="2">45.8286</Y>
+					</CPoint>
+					<CPoint Name="Pt23" ID="23" Type="0">
+						<X>0.0571289</X>
+						<Y F="Height*0.763736" R="0.763736" M="2">39.7143</Y>
+					</CPoint>
+					<CPoint Name="Pt24" ID="24" Type="0">
+						<X>-0</X>
+						<Y F="Height*0.624176" R="0.624176" M="2">32.4572</Y>
+					</CPoint>
+					<CPoint Name="Pt25" ID="25" Type="0">
+						<X>-0</X>
+						<Y F="Height*0.37033" R="0.37033" M="2">19.2571</Y>
+					</CPoint>
+					<CPoint Name="Pt26" ID="26" Type="0">
+						<X>-0.0571289</X>
+						<Y F="Height*0.237363" R="0.237363" M="2">12.3429</Y>
+					</CPoint>
+					<CPoint Name="Pt27" ID="27" Type="0">
+						<X>-0</X>
+						<Y F="Height*0.13077" R="0.13077" M="2">6.80002</Y>
+					</CPoint>
+					<CPoint Name="Pt28" ID="28" Type="0">
+						<X F="Width*0.00252084" R="0.00252084" M="1">0.171417</X>
+						<Y F="Height*0.00329649" R="0.00329649" M="2">0.171417</Y>
+					</CPoint>
+					<CPoint Name="Pt29" ID="29" Type="0">
+						<X F="Width*0.0932774" R="0.0932774" M="1">6.34286</X>
+						<Y>-0</Y>
+					</CPoint>
+					<CPoint Name="Pt30" ID="30" Type="0">
+						<X F="Width*0.188235" R="0.188235" M="1">12.8</X>
+						<Y>-0</Y>
+					</CPoint>
+					<CPoint Name="Pt31" ID="31" Type="0">
+						<X F="Width*0.278151" R="0.278151" M="1">18.9143</X>
+						<Y>-0</Y>
+					</CPoint>
+					<CPoint Name="Pt32" ID="32" Type="0">
+						<X F="Width*0.384874" R="0.384874" M="1">26.1714</X>
+						<Y>-0</Y>
+					</CPoint>
+					<CPoint Name="Pt33" ID="33" Type="0">
+						<X F="Width*0.609244" R="0.609244" M="1">41.4286</X>
+						<Y F="Height*0.00109863" R="0.00109863" M="2">0.0571289</Y>
+					</CPoint>
+					<CPoint Name="Pt34" ID="34" Type="0">
+						<X F="Width*0.702521" R="0.702521" M="1">47.7714</X>
+						<Y F="Height*0.00109863" R="0.00109863" M="2">0.0571289</Y>
+					</CPoint>
+					<CPoint Name="Pt35" ID="35" Type="0">
+						<X F="Width*0.807563" R="0.807563" M="1">54.9143</X>
+						<Y F="Height*0.00109863" R="0.00109863" M="2">0.0571289</Y>
+					</CPoint>
+					<CPoint Name="Pt36" ID="36" Type="0">
+						<X F="Width*0.905042" R="0.905042" M="1">61.5428</X>
+						<Y F="Height*0.00109863" R="0.00109863" M="2">0.0571289</Y>
+					</CPoint>
+				</CPoints>
+				<Misc/>
+				<Events/>
+				<ShapeFormat QuickMask="23">
+					<FillFormat Type="Gradient" GradientType="Linear" StopNum="3" Direction="90">
+						<Stop>
+							<Color Value="#FFFCFCFC" ThemeColor="5" Tint="95"/>
+							<Offset>0</Offset>
+						</Stop>
+						<Stop>
+							<Color Value="#FFF6F6F6" ThemeColor="5" Tint="85"/>
+							<Offset>0.5</Offset>
+						</Stop>
+						<Stop>
+							<Color Value="#FFF0F0F0" ThemeColor="5" Tint="75"/>
+							<Offset>1</Offset>
+						</Stop>
+					</FillFormat>
+					<LineFormat>
+						<LineWeight>1</LineWeight>
+						<LineCap>0</LineCap>
+						<LinePattern>1</LinePattern>
+						<Rounding>1</Rounding>
+						<BeginArrowID>0</BeginArrowID>
+						<BeginArrowSize>4</BeginArrowSize>
+						<EndArrowID>0</EndArrowID>
+						<EndArrowSize>4</EndArrowSize>
+						<LineFill Type="Solid">
+							<Color Value="#FF828282" ThemeColor="5" Shade="55"/>
+						</LineFill>
+					</LineFormat>
+					<EffectFormat>
+						<Shadow Mode="14" Scale="1" OffsetX="2" OffsetY="2" Angle="0" Blur="0">
+							<Color Value="#80BEBEBE"/>
+						</Shadow>
+					</EffectFormat>
+				</ShapeFormat>
+				<Texts>
+					<Text ID="1" Name="T1" Rtf="{\rtf1\ansi\ansicpg1252\deff0\deflang1035{\fonttbl{\f0\fswiss\fprq2\fcharset0 Arial;}}&#x0D;&#x0A;{\colortbl ;\red0\green0\blue0;}&#x0D;&#x0A;\viewkind4\uc1\pard\li50\ri50\sl240\slmult1\qc\cf1\f0\fs20 Depot\par&#x0D;&#x0A;}" ExtendMode="0" X="344" Y="300" Width="68" Height="16">
+						<TextFormat>
+							<TextFormatMask>0</TextFormatMask>
+							<FontFamily>Arial</FontFamily>
+							<FontWeight>400</FontWeight>
+							<FontHeight>10</FontHeight>
+							<FontItalic>FALSE</FontItalic>
+							<FontUnderline>FALSE</FontUnderline>
+							<FontStrikeout>FALSE</FontStrikeout>
+							<AlignHorizontal>Center</AlignHorizontal>
+							<AlignVertical>Middle</AlignVertical>
+							<Color Value="#FF000000"/>
+							<FontOffset>0</FontOffset>
+							<FontBackColor>#FFFEFD</FontBackColor>
+							<FontBullet>0</FontBullet>
+							<LeftOffset>0</LeftOffset>
+							<StartIndent>50</StartIndent>
+							<RightIndent>50</RightIndent>
+							<LineSpace>20</LineSpace>
+							<SpaceBefore>0</SpaceBefore>
+							<SpaceAfter>0</SpaceAfter>
+						</TextFormat>
+						<Transform>
+							<Width F="Width*1" R="1" M="1">68</Width>
+							<Height F="Height*1" R="1" M="2">52</Height>
+							<Angle>0</Angle>
+							<GPinX F="Width*0.5" R="0.5" M="1">34</GPinX>
+							<GPinY F="Height*0.5" R="0.5" M="2">26</GPinY>
+							<LocPinX F="Text.T1.Width*0.5">34</LocPinX>
+							<LocPinY F="Text.T1.Height*0.5">26</LocPinY>
+						</Transform>
+						<TxtField U="STR"/>
+					</Text>
+				</Texts>
+				<Geometries>
+					<Geometry>
+						<NoFill>0</NoFill>
+						<NoLine>0</NoLine>
+						<Closed>1</Closed>
+						<NoShow>0</NoShow>
+						<NoSnap>1</NoSnap>
+						<MoveTo JointType="0">
+							<X>0</X>
+							<Y>0</Y>
+						</MoveTo>
+						<LineTo JointType="0">
+							<X F="Width*1" R="1" M="1">68</X>
+							<Y>0</Y>
+						</LineTo>
+						<LineTo JointType="0">
+							<X F="Width*1" R="1" M="1">68</X>
+							<Y F="Height*1" R="1" M="2">52</Y>
+						</LineTo>
+						<LineTo JointType="0">
+							<X>0</X>
+							<Y F="Height*1" R="1" M="2">52</Y>
+						</LineTo>
+						<LineTo JointType="0">
+							<X>0</X>
+							<Y>0</Y>
+						</LineTo>
+					</Geometry>
+				</Geometries>
+			</Shape>
+			<Shape Type="Ellipse" NameU="Ellipse" Name="Ellipse" ID="107">
+				<Transform>
+					<Width>36</Width>
+					<Height>36</Height>
+					<Angle>0</Angle>
+					<GPinX>282</GPinX>
+					<GPinY>174</GPinY>
+					<LocPinX F="Width*0.5" R="0.5" M="1">18</LocPinX>
+					<LocPinY F="Height*0.5" R="0.5" M="2">18</LocPinY>
+					<FlipX>0</FlipX>
+					<FlipY>0</FlipY>
+				</Transform>
+				<CPoints>
+					<CPoint Name="Pt1" ID="1" Type="0">
+						<X>0</X>
+						<Y F="Height*0.5" R="0.5" M="2">18</Y>
+					</CPoint>
+					<CPoint Name="Pt2" ID="2" Type="0">
+						<X F="Width*0.5" R="0.5" M="1">18</X>
+						<Y>0</Y>
+					</CPoint>
+					<CPoint Name="Pt3" ID="3" Type="0">
+						<X F="Width*1" R="1" M="1">36</X>
+						<Y F="Height*0.5" R="0.5" M="2">18</Y>
+					</CPoint>
+					<CPoint Name="Pt4" ID="4" Type="0">
+						<X F="Width*0.5" R="0.5" M="1">18</X>
+						<Y F="Height*1" R="1" M="2">36</Y>
+					</CPoint>
+					<CPoint Name="Pt5" ID="5" Type="0">
+						<X F="Width*0.955555" R="0.955555" M="1">34.4</X>
+						<Y F="Height*0.288889" R="0.288889" M="2">10.4</Y>
+					</CPoint>
+					<CPoint Name="Pt6" ID="6" Type="0">
+						<X F="Width*0.711111" R="0.711111" M="1">25.6</X>
+						<Y F="Height*0.0444446" R="0.0444446" M="2">1.60001</Y>
+					</CPoint>
+					<CPoint Name="Pt7" ID="7" Type="0">
+						<X F="Width*0.866667" R="0.866667" M="1">31.2</X>
+						<Y F="Height*0.155556" R="0.155556" M="2">5.60001</Y>
+					</CPoint>
+					<CPoint Name="Pt8" ID="8" Type="0">
+						<X F="Width*0.96" R="0.96" M="1">34.56</X>
+						<Y F="Height*0.691111" R="0.691111" M="2">24.88</Y>
+					</CPoint>
+					<CPoint Name="Pt9" ID="9" Type="0">
+						<X F="Width*0.846667" R="0.846667" M="1">30.48</X>
+						<Y F="Height*0.86" R="0.86" M="2">30.96</Y>
+					</CPoint>
+					<CPoint Name="Pt10" ID="10" Type="0">
+						<X F="Width*0.675556" R="0.675556" M="1">24.32</X>
+						<Y F="Height*0.968889" R="0.968889" M="2">34.88</Y>
+					</CPoint>
+					<CPoint Name="Pt11" ID="11" Type="0">
+						<X F="Width*0.277778" R="0.277778" M="1">10</X>
+						<Y F="Height*0.946667" R="0.946667" M="2">34.08</Y>
+					</CPoint>
+					<CPoint Name="Pt12" ID="12" Type="0">
+						<X F="Width*0.122222" R="0.122222" M="1">4.39999</X>
+						<Y F="Height*0.833333" R="0.833333" M="2">30</Y>
+					</CPoint>
+					<CPoint Name="Pt13" ID="13" Type="0">
+						<X F="Width*0.0333337" R="0.0333337" M="1">1.20001</X>
+						<Y F="Height*0.677778" R="0.677778" M="2">24.4</Y>
+					</CPoint>
+					<CPoint Name="Pt14" ID="14" Type="0">
+						<X F="Width*0.0333337" R="0.0333337" M="1">1.20001</X>
+						<Y F="Height*0.322222" R="0.322222" M="2">11.6</Y>
+					</CPoint>
+					<CPoint Name="Pt15" ID="15" Type="0">
+						<X F="Width*0.306667" R="0.306667" M="1">11.04</X>
+						<Y F="Height*0.0377778" R="0.0377778" M="2">1.36</Y>
+					</CPoint>
+					<CPoint Name="Pt16" ID="16" Type="0">
+						<X F="Width*0.135556" R="0.135556" M="1">4.88</X>
+						<Y F="Height*0.153333" R="0.153333" M="2">5.52</Y>
+					</CPoint>
+				</CPoints>
+				<Misc/>
+				<Events/>
+				<ShapeFormat QuickMask="23">
+					<FillFormat Type="Gradient" GradientType="Linear" StopNum="3" Direction="90">
+						<Stop>
+							<Color Value="#FFFCFCFC" ThemeColor="5" Tint="95"/>
+							<Offset>0</Offset>
+						</Stop>
+						<Stop>
+							<Color Value="#FFF6F6F6" ThemeColor="5" Tint="85"/>
+							<Offset>0.5</Offset>
+						</Stop>
+						<Stop>
+							<Color Value="#FFF0F0F0" ThemeColor="5" Tint="75"/>
+							<Offset>1</Offset>
+						</Stop>
+					</FillFormat>
+					<LineFormat>
+						<LineWeight>1</LineWeight>
+						<LineCap>0</LineCap>
+						<LinePattern>1</LinePattern>
+						<Rounding>1</Rounding>
+						<BeginArrowID>0</BeginArrowID>
+						<BeginArrowSize>4</BeginArrowSize>
+						<EndArrowID>0</EndArrowID>
+						<EndArrowSize>4</EndArrowSize>
+						<LineFill Type="Solid">
+							<Color Value="#FF828282" ThemeColor="5" Shade="55"/>
+						</LineFill>
+					</LineFormat>
+					<EffectFormat>
+						<Shadow Mode="14" Scale="1" OffsetX="2" OffsetY="2" Angle="0" Blur="0">
+							<Color Value="#80BEBEBE"/>
+						</Shadow>
+					</EffectFormat>
+				</ShapeFormat>
+				<Texts>
+					<Text ID="1" Name="T1" Rtf="{\rtf1\ansi\ansicpg1252\deff0\deflang1035{\fonttbl{\f0\fswiss\fprq2\fcharset0 Arial;}}&#x0D;&#x0A;{\colortbl ;\red0\green0\blue0;}&#x0D;&#x0A;\viewkind4\uc1\pard\li50\ri50\sl240\slmult1\qc\cf1\f0\fs20 1\par&#x0D;&#x0A;}" ExtendMode="0" X="264" Y="166" Width="36" Height="16">
+						<TextFormat>
+							<TextFormatMask>0</TextFormatMask>
+							<FontFamily>Arial</FontFamily>
+							<FontWeight>400</FontWeight>
+							<FontHeight>10</FontHeight>
+							<FontItalic>FALSE</FontItalic>
+							<FontUnderline>FALSE</FontUnderline>
+							<FontStrikeout>FALSE</FontStrikeout>
+							<AlignHorizontal>Center</AlignHorizontal>
+							<AlignVertical>Middle</AlignVertical>
+							<Color Value="#FF000000"/>
+							<FontOffset>0</FontOffset>
+							<FontBackColor>#FFFEFD</FontBackColor>
+							<FontBullet>0</FontBullet>
+							<LeftOffset>0</LeftOffset>
+							<StartIndent>50</StartIndent>
+							<RightIndent>50</RightIndent>
+							<LineSpace>20</LineSpace>
+							<SpaceBefore>0</SpaceBefore>
+							<SpaceAfter>0</SpaceAfter>
+						</TextFormat>
+						<Transform>
+							<Width F="Width*1" R="1" M="1">36</Width>
+							<Height F="Height*1" R="1" M="2">36</Height>
+							<Angle>0</Angle>
+							<GPinX F="Width*0.5" R="0.5" M="1">18</GPinX>
+							<GPinY F="Height*0.5" R="0.5" M="2">18</GPinY>
+							<LocPinX F="Text.T1.Width*0.5">18</LocPinX>
+							<LocPinY F="Text.T1.Height*0.5">18</LocPinY>
+						</Transform>
+						<TxtField U="STR"/>
+					</Text>
+				</Texts>
+				<Geometries>
+					<Geometry>
+						<NoFill>0</NoFill>
+						<NoLine>0</NoLine>
+						<Closed>1</Closed>
+						<NoShow>0</NoShow>
+						<NoSnap>1</NoSnap>
+						<MoveTo JointType="0">
+							<X>0</X>
+							<Y F="Height*0.5" R="0.5" M="2">18</Y>
+						</MoveTo>
+						<CurveTo JointType="0">
+							<X F="Width*0.5" R="0.5" M="1">18</X>
+							<Y>0</Y>
+							<A>0</A>
+							<B F="Height*0.223858" R="0.223858" M="2">8.05889</B>
+							<C F="Width*0.223858" R="0.223858" M="1">8.05889</C>
+							<D>0</D>
+						</CurveTo>
+						<CurveTo JointType="0">
+							<X F="Width*1" R="1" M="1">36</X>
+							<Y F="Height*0.5" R="0.5" M="2">18</Y>
+							<A F="Width*0.776142" R="0.776142" M="1">27.9411</A>
+							<B>0</B>
+							<C F="Width*1" R="1" M="1">36</C>
+							<D F="Height*0.223858" R="0.223858" M="2">8.05889</D>
+						</CurveTo>
+						<CurveTo JointType="0">
+							<X F="Width*0.5" R="0.5" M="1">18</X>
+							<Y F="Height*1" R="1" M="2">36</Y>
+							<A F="Width*1" R="1" M="1">36</A>
+							<B F="Height*0.776142" R="0.776142" M="2">27.9411</B>
+							<C F="Width*0.776142" R="0.776142" M="1">27.9411</C>
+							<D F="Height*1" R="1" M="2">36</D>
+						</CurveTo>
+						<CurveTo JointType="0">
+							<X>0</X>
+							<Y F="Height*0.5" R="0.5" M="2">18</Y>
+							<A F="Width*0.223858" R="0.223858" M="1">8.05889</A>
+							<B F="Height*1" R="1" M="2">36</B>
+							<C>0</C>
+							<D F="Height*0.776142" R="0.776142" M="2">27.9411</D>
+						</CurveTo>
+					</Geometry>
+				</Geometries>
+			</Shape>
+		</Layer>
+	</Page>
+	<Preview>
+		<![CDATA[R0lGODlhlgBqAPQAAL64ucXDxMXExs7Ny8rJ0NHM0NPP1NbT1dza2uLf4OLi4uHi5OTk5Ofn5+jm6Ojo6Orq6uzs7O7u7vDw8PLy8vT09Pb29vj4+Pr6+v39/f///wAAAAAAAAAAAAAAAAAAACwAAAAAlgBqAAAI/wAhUBhIsKDBgwgTKlzIsKHDhxAjNhSooaLFixgzatzIsaPHjyBDihz5cSDJkyhTqlzJcqPJljBjypxJ8iXNmzhztrSps6fPnxp5Ah1K9KbQokiTpjyqtKnTjkyfSp0adapVpVWvah2adatXnV2/ip0ZdqxZlmXPqj2Zdq1bkG3fynVJYa5dlHFJXpBQ4e7TvCItTMBQYYLfpoBDRrBgwMKDDIeTJgYJoYKDCgwwREY6+WMFgRIUbOZcN6eFBhAgjybaebXY1q69wo6tdTZtq7ZvS82t2ynv3lhLA/f7e3jR4sa5Cic6QYLz5xIiXEgeEvnHCBiya8dwIQJ1uMuHSrO/QL58Be/fPVr3CMFCAQACAhCwcD69+vBAKydAMODAggoUoGcfXUk9gNAEAg6Y0XodGXhQdAoSyNkDFFb4QAPTRbggfhpuxWCHO3EIIm4ijrhbiSb6hmKKwbHo4YouHgdjjMrRSKKNVM2IY08f7liSjj7i1GOQHA1JZFBAHimTkUpexGSTFT0JpZRNUqmklUdiSaSWQXLpo5c7gomjmDaSSaOZMaLpoposspmimybCOaKcIE3S2aGdGuIZoZ4K8jmgn/YBmp6g3xFKnaHJIWqcosMxCpyjvUGqm6S3UUqbpbFh6pqmq3E6mqebgRqZqIeRSpxAEqWq6qqstuoqQhAEBAA7]]>
+	</Preview>
+</Document>
+

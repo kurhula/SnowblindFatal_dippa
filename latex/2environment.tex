@@ -1,0 +1,50 @@
+\chapter{Environment}
+\label{chapter:environment}
+
+The client company for which this project is made is in the house maintenance business. They specialise in specific house features and do little else. They have multiple offices in Finland and they do deliveries and installations nationwide. Since the customer can be located anywhere in the country, the distances between the offices and customers vary greatly. Closest ones can be in the same neighbourhood, while the most distant ones are hundreds of kilometres away.
+
+The jobs are put to the backlog and assigned to a technician after a contract for work has been made. This means that the routes are created separately per technician and not company-wide. The daily schedules for the technicians are made a few weeks in advance because the customers need to know beforehand when the installation job will be done. 
+
+When planning routes for the technicians, one has to take into account the requirements for each job and the limits of the workers and vehicles. There are also date and time constraints involved. The jobs have to be scheduled within 4-week windows determined by customers' preferences. Likewise, there may be specific hours of day during which the job must be done, if the customer needs to be present to let the technicians inside, for example. 
+
+The required building materials must fit into the vehicle and the total hours of the working day typically should not exceed 8 hours. 
+
+Different technicians have different skills, and some may perform faster than others. Some jobs can be done by a single technician, while others may require multiple people to do the job. 
+
+The type of the house also plays a role. A detached house has different set of challenges than an apartment building. The size of the house also affects on the difficulty as well as the equipment and time requirements of the job.
+
+Once the job is done, it is possible that the customer has additional requirements or has noticed some faults in the work, in which case a new trip has to be made to ensure customer satisfaction. 
+
+Currently planning routes for the technicians is done by hand by an employee dedicated to the task. Due to the mechanical, repetitive and complex nature of the task, it is a suitable target for a computer algorithm to solve.
+
+The goal the client company has set is a decrease in driving distances as well as saving the 4 hours of work per week it currently takes to do the planning manually.
+
+%The goal the client company has set is a 10 % decrease in driving distances, saving the 4 hours of work per week it currently takes to do the planning manually. 
+
+Because the vehicle routing problem is typically associated to solving cargo deliveries or pickups, applying it here requires some customisation to take the various constraints and requirements into account. 
+
+\section{Input data conversion}
+\label{subsection:dataconversion}
+
+The input data for the program comes from the client company's sales data. The data contains the following information:
+
+\begin{itemize}
+\item The address of the customer.
+\item The type of the house.
+\item Types and number of tasks involved in the job.
+\item The items to be installed to the house or the items previously installed in case of a service visit.
+\item Equipment required for the job.
+\item The time window for the job.
+\item Estimates of the technicians' performances. How fast they are at the job.
+\end{itemize}
+
+To prevent the algorithm from becoming overly complex, the time and resource requirements of a single job should be simplified as much as possible. This means that various weights need to be applied to various tasks and installation items, with bigger and heavier items taking more time and difficult building type or installation location also creating additional time costs for the job. The end result should be the following parameters per job target:
+
+\begin{itemize}
+\item Vehicle capacity requirements of the installation items and other equipment.
+\item Total time requirement for the technicians, affected by the house type and the amount of work to be done at the location.
+\item Distance and traveling time to other job targets and depot. 
+\end{itemize}
+
+With this simplification, applying the customer data for a VRP algorithm becomes feasible without loss of any important data. Chapter~\ref{chapter:methods} goes into detail as to how this conversion is done.
+

@@ -11,11 +11,11 @@ Raw data from the client company's database is unusable by itself. It needs to b
 
 One problem in the project is transforming the location data, mainly addresses, into form that can be more readily be used programmatically. The goal is to produce a matrix that lists the travelling time units between all the targets, including the depot. Because of the large number of targets, it is reasonable to optimise this step by grouping nearby targets together. Grouping should be done so that the traveling time between them is negligible and thus not much information is lost by the operation. The end result is that as far as the algorithm is concerned, the grouped targets occupy the same address.
 
-Because the addresses of the customers are inputted by hand into the database of the client company, not all of them are valid. Some have typos, while others may have the wrong municipality due misinformation or the frequent merges in the country. To mitigate this problem, the user can re-enter the address in case the routing service does not recognise it. Another option is to group the job with already existing jobs.
-
 Choosing a suitable routing service is an important decision to be made in the early development. The way routing services work is that the user gives two addresses and the service responds with a recommended route to travel from the first address to the second. Additionally, they typically give the distance and traveling time estimate of the trip. The most important data to get from such a service is the time requirement of traveling between two addresses. This way it will be possible to turn address data into more abstract traveling cost matrix.
 
-Generating the many-to-many traveling time matrix required in this project requires a great number of queries. The licence fees of the routing services are typically based on the number of queries made within a time period. This means that the number of queries used in the program must be kept reasonable to keep the costs in check. The program should cache queried distances between addresses and group nearby locations together.
+Geocoding is the process of turning address information into geographical coordinates which can then be used in a program more easily. Because the addresses of the customers are inputted by hand into the database of the client company, not all of them are valid. Some have typos, while others may have the wrong municipality due misinformation or the frequent municipality merges in the country. Possible ways to mitigate this problem would be allowing the user to re-enter the address in case the routing service does not recognise it. Another option is to group the job's location with one in the already existing jobs. In the context of this thesis, the program skips targets for which coordinates are not previously known. The source data that is used for the program is such that there has already been an attempt to geocode the addresses to coordinates, so it is unlikely that a previously unknown address would be valid on a second attempt. This is not impossible, however, as different geocoding services might produce different results for an address. Still, analysing such behaviour is out of the scope of this thesis. 
+
+Generating the many-to-many traveling cost matrix needed in this project requires a great number of queries. The licence fees of the routing services are typically based on the number of queries made within a time period. This means that the number of queries used in the program must be kept reasonable to keep the costs in check. The program should cache queried distances between addresses and group nearby locations together. 
 
 Naturally the routing service has to support Finland's addresses and roadmap. Another important requirement is that it can estimate the traveling time between targets, because distance by itself is not very descriptive due to varying speed limits on different roads. Traffic congestion will probably be impossible to take into account because the driving will take place weeks into the future and also because the exact time and date are not known at the time of the query. 
 
@@ -32,14 +32,10 @@ The number of technicians required at a job target is a hard parameter, in that 
 
 Two people do not perform twice as fast as a single person and different tasks at a job benefit different amounts from an increased workforce. Therefore the benefit from additional technicians should be estimated per type of task. 
 
+Once the initial parameters to convert the job information into a single time requirement have been determined, it is necessary to pay attention to how well they correspond with reality and then adjust them to get better accuracy. This is an iterative process, where future field data can be used to improve the time requirement estimate given to different tasks and installation items. 
 
 
 % TODO: generate a generic way to include new tasks, resources, house types and how they affect the total job requirements.
 % TODO: how the algorithm parameters fit into this. 
 
-
-
-
-\section{Applying a VRP solution}
-\label{section:vrp_apply}
 
