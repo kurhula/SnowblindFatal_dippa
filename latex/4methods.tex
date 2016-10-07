@@ -28,11 +28,12 @@ As shown in section~\ref{subsection:dataconversion}, the raw data from the clien
 
 Each task type has a unique time cost associated with it which is then adjusted with various factors. Different house types, floors and other environmental conditions affect on how much time is required per task. The type and size of item to be installed into the house also plays a role. 
 
-The number of technicians required at a job target is a hard parameter, in that one technician working twice as long will not be able to complete the task. If even a single task at the target requires more than one technician, the whole job will be considered a two-person job. 
+The number of technicians is fixed to two by the client company's standard procedure, so the number of workers does not play a role.  
 
-Two people do not perform twice as fast as a single person and different tasks at a job benefit different amounts from an increased workforce. Therefore the benefit from additional technicians should be estimated per type of task. 
+Once the initial parameters to convert the job information into a single time requirement have been determined, it is necessary to pay attention to how well they correspond with reality and then adjust them to get better accuracy. This is an iterative process, where future field data can be used to improve the time requirement estimate given to different tasks and installation items.
 
-Once the initial parameters to convert the job information into a single time requirement have been determined, it is necessary to pay attention to how well they correspond with reality and then adjust them to get better accuracy. This is an iterative process, where future field data can be used to improve the time requirement estimate given to different tasks and installation items. 
+For the purpose of this program, it is estimated by the client company that it will take 1 hour to install one item and about 15 minutes to do the paperwork with the customer regardless of the amount of work at the site. These initial numbers are crude estimates and should be adjusted for more accurate time requirement evaluation as more detailed information becomes available.
+    
 
 
 % TODO: generate a generic way to include new tasks, resources, house types and how they affect the total job requirements.
