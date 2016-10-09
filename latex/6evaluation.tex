@@ -2,9 +2,30 @@
 \label{chapter:evaluation}
 
 
-The main issues lie in usability. Currently the tool requires manual fetching of the input data in json format from the client company's system by adjusting the API address url to get the data from a specific date range. This data has to be then saved to a file and put to the program folder.
+The main issues lie in usability. Currently the tool requires manual fetching of the input data in json format from the client company's system by adjusting the API address url to get the data from a specific date range. This data has to be then saved to a file and put to the program folder. 
 
-How my solution worked out. How comparable it is to existing models? What are the time requirements with the data given? How optimal are the solutions? Is the software future-proof?
+The program has to be run from command line or alternatively by double clicking on the .jar file if the operating system supports this behaviour. In the latter case, the program does not show any progress information to the user.
+
+Running time depends greatly on whether the distance information has been cached or if it has to be fetched from MapQuest's routing API. A sample run with 574 job targets split between 42 technicians and an iteration count of 256 showed that without any cached results, the program took 57.7 seconds to run, and on a second go with cached distance data, the program took 9.2 seconds to complete. Profiling the program indicates that most of this time is spent in the library solving functions. About 15 \% of time was spent serialising and de-serialising the cached route data and the rest was spent on the actual problem solving.
+
+Because the actual routes are very short (71 \% of routes consist of only one job target, 21 \% of routes have two targets, 7 \% have three and mere 1 \% of routes include 4 targets), the inherent benefits of the Jsprit's implementation of the ruin and recreate method are not apparent. A simple savings algorithm probably could reach almost similar solution quality. In the context of this project this does not matter, however, as an already existing library provided the advanced functionality with no extra cost. 
+
+
+The number of iterations used for the solving did not affect the results much. The total time cost of all the routes was used as the measurement of solution quality. As figure~\ref{fig:iterations} shows, the benefit of the ruin and recreate algorithm is minimal. The initial solution with 0 iterations is less than 1 \% slower than the solution reached with 4096 iterations. The computational cost of a single iteration is constant. Doubling the number of iterations also doubles the solving time. In figure~\ref{fig:iterations} the solving time is doubled on every step. It can be seen that the benefits of increasing the number of iterations in the algorithm gradually lower until they become nonexisting at 2048 iterations. 
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=\textwidth]{images/iterations.png}
+    \caption{The total time cost of all routes with varying numbers of iterations. With 0 iterations the solution is just the initial solution created by jsprit.}
+    \label{fig:iterations}
+  \end{center}
+\end{figure} 
+
+The small differences should not be downplayed, either. In this case, the difference between the very worst and the best solution translates to 27.5 hours. Saving that many hours per month can be a sizeable savings for a company. However, the difference between 4096 and 64 iterations is only 1,5 hours in total. Finding the optimal spot between performance and solution quality lies somewhere between those two values, in my opinion. 64 iterations is an operation fast enough that it practically does not break the user's workflow, while 4096 iterations causes a very noticeable delay. With the test data and cached location data, the total run time with 4096 iterations was 2 minutes and 26.7 seconds, while with 64 iterations it was 4.5 seconds.
+
+If the routes were produced company-wide and then assigned to the technicians afterwards, the benefits of the algorithm would become more apparent. Currently there are about 10-25 job targets per technician during the one month planning period, leaving a relatively low number of possible combinations to try out. However, using the company-wide system would put more strain on the traveling cost matrix generation. Instead of multiple small all-to-all networks, there would be one big one, requiring additional optimisations to avoid having to make tens of thousands of queries to a routing API per solving.   
+
+
 
 
 \section{Customer's perspective}
@@ -21,7 +42,9 @@ The biggest downside found by the client was that there can be quite a large gap
 
 Probably the biggest room for development lies in usability. Using the program for a specific installer or automatically fetching the input data according to user preference would make the program's usage a lot more comfortable. The lack of user interface makes the program potentially confusing for a non-expert.
 
-The program's error handling capabilities are also very limited. Most errors cause the program to crash or produce bad or nonexisting results without giving an understandable error message. This is not an issue for research use, but real world usage would definitely benefit from a more solid error handling.      
+The program's error handling capabilities are also very limited. Most errors cause the program to crash or produce bad or nonexisting results without giving an understandable error message. This is not an issue for research use, but real world usage would definitely benefit from a more solid error handling. 
+
+All testing done one the program was done by hand. Automated testing would make future development a lot easier.
 
 Currently the program uses very rough estimates for determining the time required at a worksite. 1 hour per item and a fixed 15 minute overhead work fine for testing purposes, but more detailed information would provide better and more optimised routes. This would be a rather simple task that would be achievable with the usage of configuration files, for example. 
 
@@ -33,11 +56,17 @@ One way to address the aforementioned issue would be to assign a penalty to rout
 
 Another way would be to group the installation jobs by their earliest installation dates. This would be easy to implement. However, it would be difficult to tell if a certain job would fit better in the next group, resulting in potentially unnecessarily unoptimal routes. This could be countered by running the algorithm multiple times and adjusting the date ranges of the groups between runs. Then the best routes could be picked from the results. However, this would require more complex results analysis due to jobs being found in multiple routes. 
 
-The results output is currently just textual representation with the routes and the routes' job locations indented for clarity. A proper visual representation of the routes and suggested dates for them would make benefitting the results much easier. The Jsprit library supports exporting the results in xml format already, so producing a custom machine-readable output is not necessary, unless using a simpler schema or some format other than xml is required. 
+The results output is currently just textual representation with the routes and the routes' job locations indented for clarity. A proper visual representation of the routes and suggested dates for them would make benefitting the results much easier. The Jsprit library supports exporting the results in xml format already, so producing a custom machine-readable output is not necessary, unless using a simpler schema or some format other than xml is required.
+
+Performance of the program could be improved by solving the separate technicians' VRPs in parallel. Considering how quick the actual solving process was, I did not see much point in implementing this kind of concurrency to the program. 
 
 The structure of the program would need refactoring, as it was developed for research purposes with a lot of trial and error. Though the codebase is small, less than 1000 lines, restructuring and otherwise cleaning the code is necessary if this software is to be used in a bigger context.
 
 
 \section{Retrospective}
 
-Overall, I feel like this project was a success. I reached the goals I had set beforehand and firmly believe that the future development of the program is not only possible, but would increase the potential 
+Overall, I feel like this project was a success. I reached the goals I had set beforehand and firmly believe that the future development of the program is not only possible, but would increase the amount of potential benefit in work planning.
+
+The implementation process went fine without any unsolvable show stoppers which would have required doing workarounds for the desired outcome.  
+
+With highly versatile libraries such as Jsprit, the main problems to tackle involve adapting the business logic to the algorithm's framework.  

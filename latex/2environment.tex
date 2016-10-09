@@ -5,11 +5,13 @@ The client company for which this project is made is in the house maintenance bu
 
 The jobs are put to the backlog and assigned to a technician after a contract for work has been made. This means that the routes are created separately per technician and not company-wide. The daily schedules for the technicians are made a few weeks in advance because the customers need to know beforehand when the installation job will be done. The technicians work in fixed pairs and each one acts as a franchising type entrepreneur.
 
-When planning routes for the technicians, one has to take into account the requirements for each job and the limits of the workers and vehicles. There are also date and time constraints involved. The jobs have to be scheduled within 4-week windows determined by customers' preferences. Likewise, there may be specific hours of day during which the job must be done, if the customer needs to be present to let the technicians inside, for example. The installation materials are delivered separately to the customer beforehand from the factory and only after the delivery can the job be started. Optimally, the job should start as soon as possible after the delivery.
+The job types can be lumped into two categories. Installations of new items and service jobs for if it turns out that additional work needs to be done or an installation error needs fixing. In this thesis the focus is solely on the installation jobs.
 
-The required building materials must fit into the vehicle and the total hours of the working day typically should not exceed 8 hours. 
+When planning routes for the technicians, one has to take into account the requirements for each job and the limits of the workers and vehicles. There are also date and time constraints involved. The jobs have to be scheduled within 4-week windows determined by customers' preferences. Likewise, there may be specific hours of day during which the job must be done, if the customer needs to be present to let the technicians inside, for example. The installation materials are delivered separately to the customer beforehand from the factory and only after the delivery can the job be started. Optimally, the job should start as soon as possible after the delivery. The fact that the installation item deliveries are done separately means that the storage capacity of the installers' cars does not play a role in the route generation. 
 
-Different technicians have different skills, and some may perform faster than others. 
+The total hours of the working day typically should not exceed 8 hours. Setting a hard limit on 8 hours per day would make the average lower than 8 hours as it is impossible to exactly use the full amount of time for a working day. To balance this out, the maximum working day duration is set to 8.5 hours in the solving phase. 
+
+Different technicians have different skills, and some may perform faster than others. This is difficult to take into account as measuring performance is an extremely difficult and error prone task. For the purpose of this thesis, all installers are considered to be equally capable.
 
 The type of the house also plays a role. A detached house has different set of challenges than an apartment building. The size of the house also affects on the difficulty as well as the equipment and time requirements of the job.
 

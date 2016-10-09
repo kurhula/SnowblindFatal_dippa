@@ -1,7 +1,7 @@
 \chapter{Implementation}
 \label{chapter:implementation}
 
-My experiences during the whole ordeal
+The goal of this thesis was to create a program which automatically generates route data of a pool of jobs at various locations. This chapter describes the process of determining the best tools for the development of the program, the implementation progress itself and the final structure of the program.
 
 \section{Technical decisions}
 
@@ -9,7 +9,7 @@ Picking libraries, choosing languages, determining algorithms, yeah!
 
 \subsection{Generating the routing data}
 
-To create the all-to-all distance matrix necessary for solving the VRP, it is necessary to use a map routing API which computes the distance of the best route between two nodes and estimates the corresponding traveling time. Since there can be hundreds of target locations for the algorithm, it is necessary to group nearby targets into one to limit the number of queries made to the API.
+To create the all-to-all distance matrix necessary for solving the VRP, it is necessary to use a map routing API which computes the distance of the best route between two nodes and estimates the corresponding traveling time. Since there can be a lot of locations for the algorithm, it is necessary to group nearby targets into one to limit the number of queries made to the API. Even if the routes are generated per technician (i.e. it is necessary to only generate the all-to-all cost matrix from all the jobs assigned to the technician at hand), it is still necessary to make thousands of queries to the map routing API.  
 
 The grouping was performed by picking a random node and assigning its coordinates to other nodes within a 3 kilometre radius. This is then repeated for the remaining untouched nodes until no more merges are possible. While better results could be obtained by picking the merger nodes according to some rules, this simple algorithm is effective enough. The inaccuracy caused by the maximum of 3 kilometre disparity between the real location and the one used for the algorithm should not usually cause big differences in travel time, though with natural formations such as rivers or lakes, this is a possibility.
 
@@ -26,24 +26,29 @@ Because the algorithm is CPU-intensive, the more low-level languages take preced
 Due to the performance-centric nature of the algorithm, it is important that the language chosen can be profiled to see which parts of the algorithm are the most resource-intensive. Though most modern languages fulfill this requirement, it is worthy of mentioning. 
 
 
-\subsection{Choosing the libraries to use}
+\subsection{Choosing the library to use}
 
-The important criteria for choosing the libraries to use are performance, solution quality and suitability to the parameters specific to this project. Ease of use and the quality of documentation are also signifcant factors.
+The important criteria for choosing the libraries to use are performance, solution quality and suitability to the parameters specific to this project. Ease of use and the quality of documentation are also signifcant factors, as well as how well the library is being maintained currently.
 
 My main strategy when picking the library to use was to read the API documentation to see if it supported the functionality I need. Since there are so many different variations of the VRP, there are also numerous types of libraries, most of which were specialised for a specific kind of VRP. If a library was aimed for a different purpose it became apparent quickly. Then I examined how well the library has been maintained and how clear the documentation is.
 
-To see if a library was suitable for my requirements, I looked at the API provided by the library and determined if the API supported the functionality I required. If there was no built-in support, I looked how well the library supported writing additional custom constraints to be use in the route generation. I also considered the number and variety of usage examples as one criterion for the decision, as it is a clear indication whether the library supports the various use cases required in the context of this thesis. This method of choosing a library eventually led me to pick Jsprit.
- 
-This initial choice I made turned out to be a good one and there was little reason to explore other options.
+To see if a library was suitable for my requirements, I looked at the API provided by the library and determined if the API supported the functionality I required. If there was no built-in support, I looked how well the library supported writing additional custom constraints to be use in the route generation. I also considered the number and variety of usage examples as one criterion for the decision, as it is a clear indication whether the library supports the various use cases required in the context of this thesis. This method of choosing a library eventually led me to pick a Java-based library Jsprit by Stefan Schröder\cite{jsprit}. 
 
 
+\subsection{Jsprit routing library}
+To find solutions to VRP, Jsprit employs the ruin and recreate method desribed in section~\ref{subsection:ruinandrecreate}. Java is a language I am very comfortable with, so my personal preference can also be considerd as a deciding factor.
 
-\subsection{Langugage and library decision}
-\label{subsection:library and language}
+Jsprit supports many different types of VRP. It allows the programmer to define multiple types of vehicles each with different capacities for various types of items. Each vehicle can have an associated fixed and running costs. The fixed cost is applied for simply using the vehicle (this represents, for example, buying the said vehicle) and running costs signify gasoline usage, service costs (averaged over driving distance) and so on. Additionally, the maximum speed and waiting time costs can be specified for vehicles. For each vehicle, the starting and end location of routes can be set. This essentially means that Jsprit is capable of solving complex MDVRPs.
 
-The library I chose for the program was jsprit developed by Stefan Schröder. TODO: More talk. Cite github repository. https://github.com/graphhopper/jsprit
+The jobs of routes are called services, and each service is associated with a location and a time cost. Locations can contain time windows. The traveling costs (time and distance) between locations can be set using costs matrix.  
 
-Jsprit also produces rough visualisations of the best solution it has found, as can be seen in Figure~\ref{fig:librarysolution}.
+Jsprit limits the computation time by providing a setting for iterations, with each iteration consisting of one phase of ruining and recreation.
+
+If the built in constraints found in jsprit are not enough to satisfy the programmer's need, the library also supports additional constraints using an API provided by the library. Jsprit then uses these constraints during route creation to check whether the newly created route is valid.
+  
+This initial choice I made turned out to be a good one and there was little reason to explore other options. The performance, ease of use and quality of results turned out to be as good as I hoped for. Currently the library is mostly maintained and updated by a single person with some random developers providing occasional patches. 
+
+Jsprit has built-in xml generator for outputting the solution's route data. It also allows accessing the solution data programmatically, making it possible to more directly use the information for custom outputting or manipulation of the results. Jsprit also produces rough visualisations of the best solution it has found, as can be seen in Figure~\ref{fig:librarysolution}.
 
 \begin{figure}[h]
   \begin{center}
@@ -52,6 +57,12 @@ Jsprit also produces rough visualisations of the best solution it has found, as 
     \label{fig:librarysolution}
   \end{center}
 \end{figure}
+
+
+
+\subsection{Other VRP libraries}
+
+I looked into several libraries also made for solving VRPs. While this is far from an exhaustive list of the various free libraries available, it seemed like a   
 
 Other libraries I researched were (TODO: cite and format properly, explain why they weren't picked)
 
@@ -72,11 +83,17 @@ OptaPlanner: https://www.optaplanner.org
 To ensure future maintainability, the program was designed to be modular, so if some part of the program needs to changed, the operation will be as easy as possible. The modules of the program are as follows:
 
 \begin{enumerate}  
-\item Routing module, transforming address data into a traveling cost matrix. TODO
-\item Job resource calculator, abstracting the job resource and man-hour requirements into numbers.
+\item Routing module, transforming address data into a traveling cost matrix. 
+\item Job resource demand calculator, abstracting the job resource and man-hour requirements into numbers.
 \item The algorithm module, using the traveling cost matrix and job requirements to produce route data.
-\item Results visualiser, displaying the results data in a more human-readable form. (not implemented)
+\item Results visualiser, displaying the results data in a more human-readable form. 
 \item Results storing module, converting the results into data suitable to be stored in the client company's database. (not implemented) 
 \end{enumerate}
+
+\subsubsection{Routing module}
+\subsubsection{Job resource demand calculator}
+\subsubsection{The algorithm module}
+\subsubsection{Results visualiser}
+\subsubsection{Results storing module}
 
  

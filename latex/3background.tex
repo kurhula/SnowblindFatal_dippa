@@ -266,6 +266,8 @@ where $a_{ik}$ is 1 only if the vertex $i$ is in the route $k$. \cite{laporte200
 
 \subsection {Ruin and Recreate}
 
+\label{subsection:ruinandrecreate} 
+
 Developed by Schrimpf et al., the ruin and recreate algorithm is based on the concept of having a solution of varying quality as the base, after which all trips to a set of nodes are removed (``ruined''). The set can be picked randomly, from a radial area, or by some other rule. The intermediate result is the same solution as in the beginning, with some nodes not being serviced. The routes are then re-created so that every ruined node gets inserted into a route where it creates the least amount of additional time requirement so that no constraints (capacity, time, etc.) are broken. If it is impossible to insert a ruined node to a route without breaking constraints, a new route will be created. Once all the ruined nodes have been readded to routes, the algorithm can be repeated. \cite{schrimpf2000record} 
 
 Shrimpf et al. state that there are probably better and more elaborate algorithms for the recreation procedure, but that even with their simple scheme, very good results can be achieved. Likewise, there are numerous strategies to choose from for the ruin part of the algorithm. Also, choosing which solution to continue from after iterations affects results. One way is to always use the best results gotten so far, but it may also pay off to try to continue from a slightly worse solution. A big benefit of the algorithm is that it allows easy applying of custom constraints. \cite{schrimpf2000record} 
