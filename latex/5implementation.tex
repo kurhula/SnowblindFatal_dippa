@@ -5,9 +5,10 @@ The goal of this thesis was to create a program which automatically generates ro
 
 \section{Technical decisions}
 
-Picking libraries, choosing languages, determining algorithms, yeah!
+Technical decisions made early on can greatly effect the final results. Choosing the wrong technologies, for instance, can cause severe setbacks, additional work and in the worst cases completely impede progreess.
 
 \subsection{Generating the routing data}
+\label{subsection:routingdata}
 
 To create the all-to-all distance matrix necessary for solving the VRP, it is necessary to use a map routing API which computes the distance of the best route between two nodes and estimates the corresponding traveling time. Since there can be a lot of locations for the algorithm, it is necessary to group nearby targets into one to limit the number of queries made to the API. Even if the routes are generated per technician (i.e. it is necessary to only generate the all-to-all cost matrix from all the jobs assigned to the technician at hand), it is still necessary to make thousands of queries to the map routing API.  
 
@@ -62,21 +63,24 @@ Jsprit has built-in xml generator for outputting the solution's route data. It a
 
 \subsection{Other VRP libraries}
 
-I looked into several libraries also made for solving VRPs. While this is far from an exhaustive list of the various free libraries available, it seemed like a   
+I looked into several libraries also made for solving VRPs. This is far from an exhaustive list of the various free libraries available, but might give some pointers for people who are also interested in VRP solving.  
 
-Other libraries I researched were (TODO: cite and format properly, explain why they weren't picked)
+Other libraries I researched were:
 
-VRPH: https://sites.google.com/site/vrphlibrary/
+\begin{itemize}
+\item VRPH: An extensive open source C++ library for solving VRPs. \cite{vrph} 
+\item Google's Operations Research tools: A collection of various tools for solving many different types of combinatorial problems. \cite{googleor}
+\item Open-VRP: A lisp-based open source library for VRPs. \cite{openvrp}
+\item VROOM: A C++-based VRP library. \cite{vroom}
+\item OptaPlanner: An open source library capable of solving various combinatorial problems, including VRPs. \cite{optaplanner}
+\end{itemize}
 
-Google OR Tools: https://github.com/google/or-tools
-
-Open-VRP: https://github.com/mck-/Open-VRP
-
-VROOM: https://github.com/VROOM-Project/vroom
-
-OptaPlanner: https://www.optaplanner.org
 
 \section{Development of the program}
+
+I did the development using the Netbeans IDE. The Jsprit library was the only external library I needed during the development and it was fetched using Maven, a software project management tool.
+
+The development of the program was a straightforward process. I first used some mock data to try out the Jsprit library and see how it performs with some simple fixed problems. Once I was convinced it was functional and expandable piece of software, I proceeded to apply the full business logic, because I had enough experience related to the rest of the project's aspects to know that I would be able to implement them without insurmountable issues. 
 
 \subsection{Structure of the program}
 
@@ -91,9 +95,81 @@ To ensure future maintainability, the program was designed to be modular, so if 
 \end{enumerate}
 
 \subsubsection{Routing module}
+
+The input of this module is the customer data including upcoming jobs and their locations, and the output is a matrix containing the traveling times between these locations. To determine the traveling times, the module makes queries to the map routing API, as demonstrated in subsection~\ref{subsection:routingdata}.
+
+As the many-to-many networks require a lot of queries and a high number of queries leads to higher costs, the module is forced to make some optimisations. Nearby targets are forced into the same location because the difference in traveling times would be minimal. Another benefit of reducing the number of queries is performance. Currently most of the program's time is spent querying the traveling times from the routing API.
+
+When receiving a list of job targets, this module iterates through them and creates new locations if the new target's location is too far from existing ones to be merged to them. Afterwards each target knows the id of the location corresponding with itself. 
+
+With this reduced set of $n$ locations, the module makes $\frac{n^2}{2}$ queries to the routing API. The paths are considered symmetrical, as the traveling time is rarely significantly different depending on which way it is travelled.
+
+All the routing information is cached after fetching it to avoid having to fetch the same data on successive runs if the same input data is used. This also makes consequent uses of the program faster.  
+
 \subsubsection{Job resource demand calculator}
+
+The estimation as for how long a job will take is currently very coarse. Each installation item takes one hour and each job target has a 15-minute overhead during which contractual business with the customer is done before the work can begin. 
+
+If the job duration added to the back and forth traveling time between the target and the depot is greater than 8.5 hours, the program considers the job too large to complete in one route and splits it. It then calculates the maximum number of installation items that can be handled in one day at the target and creates a new ``subtarget'' which contains the rest of the items. This process is repeated if the new target is again too large to fit on a single day's work schedule. 
+
+For the sake of the algorithm, the subtargets are considered the same as the main targets. However, when outputting solution information, it is important to know which is the main job target item of subtargets.  
+
 \subsubsection{The algorithm module}
+
+The algorithm module takes the target information and location matrix as input and outputs the solution information ready to be used for whatever purpose. 
+
+Using Jsprit's API, the technician's home is set as the depot and the job targets as the nodes to be visited. The traveling costs matrix is then given to Jsprit. Because Jsprit does not natively support having a maximum route time constraint, I created one using its custom constraint API.   
+
 \subsubsection{Results visualiser}
+
+Visualisation of the results is currently limited to the Jsprit library's own plotting functionality, and custom textual output of the routes. By themselves the plots are not helpful at all. For them to be useful, the user would have to see the graph nodes on a map to better see the shape of the routes. The connecting lines between the nodes would also be more informative if they followed the road network instead of being straight lines from one node to another. 
+
+To get at least some kind of useful human-readable output, the program prints the route information of each individual technician to a separate file. The routes do not have any specific dates assigned to them, but rather contain information as to what is the earliest possible date they can be done, considering that there needs to be a few days between the delivery of the installation items and the beginning of the job. 
+
+As many job targets are too large to fit in one route because they would make the working day too long, they are split into smaller ones (``subtargets''). These subtargets contain a reference to the main targets. With these kinds of targets, the number of installation items to do on the route is less than the total number of installation items.
+
+The actual textual output is in Finnish, but here is a sample of the output translated into English and personal information replaced with placeholder data: 
+
+\begin{verbatim}
+Technician: Remontti Reiska, Silmupolunsuo 25, 38100  Hämeenkyrö
+Total number of targets: 9
+Total number of targets including subtargets: 11
+Total number of routes: 6
+
+NEW ROUTE 
+duration: 454 min 
+earliest date of installation: Sat Nov 05 00:00:00 EET 2016:
+  NEW TARGET:
+    target id: 202; 
+    date of delivery: Tue Nov 01 00:00:00 EET 2016;
+    time (min): 26 - 101;
+    address: Kalmankatu 6, 33330, Tampere;
+    number of installation items: 1, total: 1;
+  NEW TARGET:
+    target id: 70; 
+    date of delivery: Fri Oct 14 00:00:00 EEST 2016;
+    time (min): 157 - 292;
+    address: Aliliidontie 52, 34260, Tampere;
+    number of installation items: 2, total: 2;
+  NEW SUBTARGET:
+    target id: 272, Main target's id: 140; 
+    date of delivery: Fri Oct 14 00:00:00 EEST 2016;
+    time (min): 338 - 413;
+    address: Kalansilmänkuja 2, 33700, Tampere;
+    number of installation items: 1, total: 13;
+------------------------
+NEW ROUTE 
+duration: 456 min 
+earliest date of installation: Tue Oct 18 00:00:00 EEST 2016:
+  NEW TARGET:
+    Target id: 140, date of delivery: Fri Oct 14 00:00:00 EEST 2016;
+    time (min): 40 - 415;
+    address: Tuomiontie 66, 33700, Tampere;
+    number of installation items: 6, total: 13;
+...
+\end{verbatim}
+
 \subsubsection{Results storing module}
 
+The results are currently only outputted to the user. In order to reach bigger gains in usability and efficiency, the results could be processed automatically. The program could assign specific dates to the routes and store the information to a database. In the optimal case, the routes are generated automatically as new customers are added to the registry, and the generated routes are only approved by a human before put into use. Even the last step could be skipped once the reliability of the route generation reaches a sufficiently good level. 
  

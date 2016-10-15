@@ -2,10 +2,11 @@
 \label{chapter:evaluation}
 
 
-The main issues lie in usability. Currently the tool requires manual fetching of the input data in json format from the client company's system by adjusting the API address url to get the data from a specific date range. This data has to be then saved to a file and put to the program folder. 
+The most obvious aspect to improve in the program is usability. Currently the tool requires manual fetching of the input data in json format from the client company's system by adjusting the API address url to get the data from a specific date range. This data has to be then saved to a file and put to the program folder. 
 
 The program has to be run from command line or alternatively by double clicking on the .jar file if the operating system supports this behaviour. In the latter case, the program does not show any progress information to the user.
 
+\section{Results}
 Running time depends greatly on whether the distance information has been cached or if it has to be fetched from MapQuest's routing API. A sample run with 574 job targets split between 42 technicians and an iteration count of 256 showed that without any cached results, the program took 57.7 seconds to run, and on a second go with cached distance data, the program took 9.2 seconds to complete. Profiling the program indicates that most of this time is spent in the library solving functions. About 15 \% of time was spent serialising and de-serialising the cached route data and the rest was spent on the actual problem solving.
 
 Because the actual routes are very short (71 \% of routes consist of only one job target, 21 \% of routes have two targets, 7 \% have three and mere 1 \% of routes include 4 targets), the inherent benefits of the Jsprit's implementation of the ruin and recreate method are not apparent. A simple savings algorithm probably could reach almost similar solution quality. In the context of this project this does not matter, however, as an already existing library provided the advanced functionality with no extra cost. 
@@ -32,9 +33,9 @@ If the routes were produced company-wide and then assigned to the technicians af
 
 The customer was able to run the program and make it produce the expected output. The customer was overall pleased with the program's output and found that it could be used for planning routes. 
 
-This program, a preliminary demo of what is possible to do, caused interest the client company to further develop the work planning procedures used in the company and automate them further.
+This program, a preliminary demo of what is possible to do, caused interest in the client company to continue the development the work planning procedures used in the company and automate them further. The next step would be optimising the way the job targets are assigned to the various technicians. This will likely provide much more optimal results, as inefficient allocation of jobs might make it impossible to do a the routing process itself well. Automating the whole process would also grant the possibility of objectively comparing different approaches to work planning, as one method will provide a better less traveling overhead than another and the results are immediately measureable.   
 
-The biggest downside found by the client was that there can be quite a large gap in the earliest possible installation date between the jobs on a single route. This is because currently the program does not care about the earliest installation date except at results outputting. 
+The biggest downside found by the client in the current program was that there can be quite a large gap in the earliest possible installation date between the jobs on a single route. This is because currently the program does not care about the earliest installation date except at results outputting. Aside from this issue, the client did not find problems with the program. 
 
 
 
@@ -42,13 +43,14 @@ The biggest downside found by the client was that there can be quite a large gap
 
 Probably the biggest room for development lies in usability. Using the program for a specific installer or automatically fetching the input data according to user preference would make the program's usage a lot more comfortable. The lack of user interface makes the program potentially confusing for a non-expert.
 
-The program's error handling capabilities are also very limited. Most errors cause the program to crash or produce bad or nonexisting results without giving an understandable error message. This is not an issue for research use, but real world usage would definitely benefit from a more solid error handling. 
 
-All testing done one the program was done by hand. Automated testing would make future development a lot easier.
+\subsection{Business logic}
 
-Currently the program uses very rough estimates for determining the time required at a worksite. 1 hour per item and a fixed 15 minute overhead work fine for testing purposes, but more detailed information would provide better and more optimised routes. This would be a rather simple task that would be achievable with the usage of configuration files, for example. 
+Currently the program uses very rough estimates for determining the time required at a worksite. 1 hour per item and a fixed 15 minute overhead work fine for testing purposes, but more detailed information would provide better and more optimised routes. This would be a rather simple task that would be achievable with the usage of configuration files, for example. This would also make it relatively simple to make the program support new types of installation items and more specifically categorise building types.
 
 The user could enter the average time requirements per installation item type based on past experience on worksites where the item has been installed. The effect of different house types and the floor number of the operation could be taken into account. Furthermore, the relative performance of technicians could be listed, allowing the scaling of the time requirement to get as accurate estimation as possible.
+
+As the program provides only routes for the future, it does not take into account any potential setbacks, such as sick leaves, car malfunctions and so on. As the routes themselves outputted by the program do not have any specific date, but rather only an earliest possible date, it could be thought that a sick leave, for instance will only require postponing the routes in calendar.  
 
 The client company's request for following the time windows more strictly is also a clear way to improve the results provided by the program. Considering that the jobs should start as soon as possible after the construction materials have been delivered to the worksite, the algorithm should try to group targets with near delivery dates onto same routes. Currently the algorithm can create routes such that the delivery of the installation materials of the earliest job is weeks before the delivery of the latest job, resulting in a scenario where the the materials will lie  unused at the worksite of the earlier job for weeks. This would lead to reduced customer satisfaction.
 
@@ -56,11 +58,17 @@ One way to address the aforementioned issue would be to assign a penalty to rout
 
 Another way would be to group the installation jobs by their earliest installation dates. This would be easy to implement. However, it would be difficult to tell if a certain job would fit better in the next group, resulting in potentially unnecessarily unoptimal routes. This could be countered by running the algorithm multiple times and adjusting the date ranges of the groups between runs. Then the best routes could be picked from the results. However, this would require more complex results analysis due to jobs being found in multiple routes. 
 
+\subsection{Output}
 The results output is currently just textual representation with the routes and the routes' job locations indented for clarity. A proper visual representation of the routes and suggested dates for them would make benefitting the results much easier. The Jsprit library supports exporting the results in xml format already, so producing a custom machine-readable output is not necessary, unless using a simpler schema or some format other than xml is required.
 
 Performance of the program could be improved by solving the separate technicians' VRPs in parallel. Considering how quick the actual solving process was, I did not see much point in implementing this kind of concurrency to the program. 
 
-The structure of the program would need refactoring, as it was developed for research purposes with a lot of trial and error. Though the codebase is small, less than 1000 lines, restructuring and otherwise cleaning the code is necessary if this software is to be used in a bigger context.
+\subsection{Programming aspects}
+The structure of the program would need refactoring, as it was developed for research purposes with a lot of trial and error. Though the codebase is very small, less than 1000 lines, restructuring and otherwise cleaning the code is necessary if this software is to be used in a bigger context.
+
+The program's error handling capabilities are also very limited. Most errors cause the program to crash or produce bad or nonexisting results without giving an understandable error message. This is not an issue for research use, but real world usage would definitely benefit from a more solid error handling. 
+
+All testing on the program was done by hand. Automated testing would make future development a lot easier.
 
 
 \section{Retrospective}

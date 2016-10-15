@@ -27,7 +27,7 @@ The main idea in the network is that every node (i.e. vertex) has a connecting e
 
 The first vertex in $V$ represents the depot, where all the vehicles start from and where they must end their trips. $m$ identical vehicles have a capacity denoted by $Q$ which symbolises the resources available for each trip. In the classic VRP, $m$ is logically equivalent to the number of trips needed to visit every customer. With time windows this no longer holds true. Every customer vertex $i \in V\setminus\{v_0\}$ has a demand $q_i \leq Q$ associated with it. This symbolises the various resources, including time, required at the target. \cite{laporte2007you}
 
-Vehicle routing problem is NP-hard as it is a superset of the traveling salesman problem. In traveling salesman problem, the number of vehicles is $m = 1$, there is no upper limit on the costs of a route and the capacity of the vehicle is greater than the combined requirement of all the nodes in the network ($Q = \infty$). \cite{laporte2007you} The classic VRP is sometimes called the capacitated vehicle routing problem (CVRP). \cite{hassanzadeh2009location}
+Vehicle routing problem is NP-complete and it is a superset of the traveling salesman problem. In traveling salesman problem, the number of vehicles is $m = 1$, there is no upper limit on the costs of a route and the capacity of the vehicle is greater than the combined requirement of all the nodes in the network ($Q = \infty$). \cite{laporte2007you} The classic VRP is sometimes called the capacitated vehicle routing problem (CVRP). \cite{hassanzadeh2009location}
 
 Let $x_{ij}$ denote the number of trips made over the edge $[i, j]$ in a solution. The total cost that should be minimised is then:
 
@@ -105,13 +105,11 @@ mean that every edge whose other end is the depot is travelled at most two times
 
 
 
-
-
 \section{Variations of the vehicle routing problem}
 
 The real life needs of route planning are rarely satisfied with the basic vehicle routing problem. There are typically additional constraints and an increased complexity that require expanding the problem statement. The vehicles used are probably not identical in terms of capacity and cost. The number of depots might also be greater than 1 and each target has to be allocated to one of them. \cite{salhi2014multi} In addition, there might be specific time windows during which the targets have to be visited \cite{ghoseiri2010multi}. 
 
-All of these additional features can be combined into a multitude of variations of the VRP. As all the variations add to the complexity of the VRP, they too are NP-hard. The variations listed here represent the most common types of VRP, but in addition, there are more specific types still available, such as one where only certain types of vehicles may visit certain targets. \cite{montoya2015literature} 
+All of these additional features can be combined into a multitude of variations of the VRP. As all the variations add to the complexity of the VRP, they too are NP-complete. The variations listed here represent the most common types of VRP, but in addition, there are more specific types still available, such as one where only certain types of vehicles may visit certain targets. \cite{montoya2015literature} 
 
 
 \subsection{Multi-depot Vehicle routing problem}

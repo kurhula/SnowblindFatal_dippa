@@ -3,7 +3,7 @@
 
 The client company for which this project is made is in the house maintenance business. They specialise in specific house features and do little else. They have multiple offices in Finland and they do deliveries and installations nationwide. Since the customer can be located anywhere in the country, the distances between the offices and customers vary greatly. Closest ones can be in the same neighbourhood, while the most distant ones are hundreds of kilometres away.
 
-The jobs are put to the backlog and assigned to a technician after a contract for work has been made. This means that the routes are created separately per technician and not company-wide. The daily schedules for the technicians are made a few weeks in advance because the customers need to know beforehand when the installation job will be done. The technicians work in fixed pairs and each one acts as a franchising type entrepreneur.
+The jobs are put to the backlog and assigned to a technician after a contract for work has been made. This means that the routes are created separately per technician and not company-wide. The daily schedules for the technicians are made a few weeks in advance because the customers need to know beforehand when the installation job will be done. The technicians work in fixed pairs and each one acts as a franchising type entrepreneur. The ``depots'' of the technicians are their homes for the purpose of VRP, as they typically start and end their working days at home. This essentially means that instead of solving one big VRP including all the job targets and all techicians, there are instead numerous small VRPs, grouped by the technician assigned for the jobs. 
 
 The job types can be lumped into two categories. Installations of new items and service jobs for if it turns out that additional work needs to be done or an installation error needs fixing. In this thesis the focus is solely on the installation jobs.
 
@@ -32,6 +32,7 @@ The input data for the program comes from the client company's sales data. The d
 
 \begin{itemize}
 \item The address of the customer.
+\item The address of the technician (``depot'').
 \item The type of the house.
 \item Types and number of tasks involved in the job.
 \item The items to be installed to the house or the items previously installed in case of a service visit.
