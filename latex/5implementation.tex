@@ -54,7 +54,7 @@ Jsprit has built-in xml generator for outputting the solution's route data. It a
 \begin{figure}[h]
   \begin{center}
     \includegraphics[width=\textwidth]{images/librarysolution.png}
-    \caption{An example of the graph output produced by the library}
+    \caption{An example of the graph output produced by the library. Data unrelated to the business case.}
     \label{fig:librarysolution}
   \end{center}
 \end{figure}
@@ -76,13 +76,11 @@ Other libraries I researched were:
 \end{itemize}
 
 
-\section{Development of the program}
+\section{Development and structure of the program}
 
 I did the development using the Netbeans IDE. The Jsprit library was the only external library I needed during the development and it was fetched using Maven, a software project management tool.
 
 The development of the program was a straightforward process. I first used some mock data to try out the Jsprit library and see how it performs with some simple fixed problems. Once I was convinced it was functional and expandable piece of software, I proceeded to apply the full business logic, because I had enough experience related to the rest of the project's aspects to know that I would be able to implement them without insurmountable issues. 
-
-\subsection{Structure of the program}
 
 To ensure future maintainability, the program was designed to be modular, so if some part of the program needs to changed, the operation will be as easy as possible. The modules of the program are as follows:
 
@@ -94,7 +92,7 @@ To ensure future maintainability, the program was designed to be modular, so if 
 \item Results storing module, converting the results into data suitable to be stored in the client company's database. (not implemented) 
 \end{enumerate}
 
-\subsubsection{Routing module}
+\subsection{Routing module}
 
 The input of this module is the customer data including upcoming jobs and their locations, and the output is a matrix containing the traveling times between these locations. To determine the traveling times, the module makes queries to the map routing API, as demonstrated in subsection~\ref{subsection:routingdata}.
 
@@ -106,7 +104,7 @@ With this reduced set of $n$ locations, the module makes $\frac{n^2}{2}$ queries
 
 All the routing information is cached after fetching it to avoid having to fetch the same data on successive runs if the same input data is used. This also makes consequent uses of the program faster.  
 
-\subsubsection{Job resource demand calculator}
+\subsection{Job resource demand calculator}
 
 The estimation as for how long a job will take is currently very coarse. Each installation item takes one hour and each job target has a 15-minute overhead during which contractual business with the customer is done before the work can begin. 
 
@@ -114,13 +112,13 @@ If the job duration added to the back and forth traveling time between the targe
 
 For the sake of the algorithm, the subtargets are considered the same as the main targets. However, when outputting solution information, it is important to know which is the main job target item of subtargets.  
 
-\subsubsection{The algorithm module}
+\subsection{The algorithm module}
 
 The algorithm module takes the target information and location matrix as input and outputs the solution information ready to be used for whatever purpose. 
 
 Using Jsprit's API, the technician's home is set as the depot and the job targets as the nodes to be visited. The traveling costs matrix is then given to Jsprit. Because Jsprit does not natively support having a maximum route time constraint, I created one using its custom constraint API.   
 
-\subsubsection{Results visualiser}
+\subsection{Results visualiser}
 
 Visualisation of the results is currently limited to the Jsprit library's own plotting functionality, and custom textual output of the routes. By themselves the plots are not helpful at all. For them to be useful, the user would have to see the graph nodes on a map to better see the shape of the routes. The connecting lines between the nodes would also be more informative if they followed the road network instead of being straight lines from one node to another. 
 
@@ -169,7 +167,7 @@ earliest date of installation: Tue Oct 18 00:00:00 EEST 2016:
 ...
 \end{verbatim}
 
-\subsubsection{Results storing module}
+\subsection{Results storing module}
 
 The results are currently only outputted to the user. In order to reach bigger gains in usability and efficiency, the results could be processed automatically. The program could assign specific dates to the routes and store the information to a database. In the optimal case, the routes are generated automatically as new customers are added to the registry, and the generated routes are only approved by a human before put into use. Even the last step could be skipped once the reliability of the route generation reaches a sufficiently good level. 
  
