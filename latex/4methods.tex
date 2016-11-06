@@ -25,12 +25,34 @@ One possible way to take congestion into account would be to redo the queries af
 \subsection{Calculating job costs}
 As shown in section~\ref{subsection:dataconversion}, the raw data from the client company's database needs to be transformed into simple parameters for the algorithm. The goal is to minimise the loss of information important to the algorithm while also reducing the number of input parameter variables as much as possible.  
 
-Each task type has a unique time cost associated with it which is then adjusted with various factors. Different house types, floors and other environmental conditions affect on how much time is required per task. The type and size of item to be installed into the house also plays a role. 
+Each task type has a unique time cost associated with it which is then adjusted with various factors. Different house types, floors and other environmental conditions affect on how much time is required per task. The type and size of item to be installed into the house also plays a role. Also the type and age of the house affect the time requirement. However, these factors are left out of the scope of this project as it would require additional statistical data regarding the time intensiveness of the features.  
 
 The number of technicians is fixed to two by the client company's standard procedure, so the number of workers does not play a role.  
 
 Once the initial parameters to convert the job information into a single time requirement have been determined, it is necessary to pay attention to how well they correspond with reality and then adjust them to get better accuracy. This is an iterative process, where future field data can be used to improve the time requirement estimate given to different tasks and installation items.
 
 For the purpose of this program, it is estimated by the client company that it will take 1 hour to install one item and about 15 minutes to do the paperwork with the customer regardless of the amount of work at the site. These initial numbers are crude estimates and should be adjusted for more accurate time requirement evaluation as more detailed information becomes available.
+
+The time required to do a single job item can be ideally calculated with the following formula: 
+
+
+\begin{equation}
+\label{eq:timecost}
+\displaystyle \sum_{c \in I} (c\times d\times e) + 15 min,
+\end{equation}
+
+where $I$ contains the time costs ($c$) of the items to be installed at the target, $d$ is the difficulty factor of the house type and $e$ is the efficiency ratio of the technician.  
+
+
+
+
+
+
+
+
+
+
+
+
 
 

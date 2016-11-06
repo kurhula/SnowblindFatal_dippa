@@ -12,12 +12,12 @@ Running time depends greatly on whether the distance information has been cached
 Because the actual routes are very short (71 \% of routes consist of only one job target, 21 \% of routes have two targets, 7 \% have three and mere 1 \% of routes include 4 targets), the inherent benefits of the Jsprit's implementation of the ruin and recreate method are not apparent. A simple savings algorithm probably could reach almost similar solution quality. In the context of this project this does not matter, however, as an already existing library provided the advanced functionality with no extra cost. 
 
 
-The number of iterations used for the solving did not affect the results much. The total time cost of all the routes was used as the measurement of solution quality. As figure~\ref{fig:iterations} shows, the benefit of the ruin and recreate algorithm is minimal. The initial solution with 0 iterations is less than 1 \% slower than the solution reached with 4096 iterations. The computational cost of a single iteration is constant. Doubling the number of iterations also doubles the solving time. In figure~\ref{fig:iterations} the solving time is doubled on every step. It can be seen that the benefits of increasing the number of iterations in the algorithm gradually lower until they become nonexisting at 2048 iterations. 
+The number of iterations used for the solving did not affect the results much. The total time cost of all the routes was used as the measurement of solution quality. As figure~\ref{fig:iterations} shows, the benefit of the ruin and recreate algorithm is minimal. When only the driving time is observed, the initial solution with 0 iterations is only 3.1 \% slower than the solution reached with 4096 iterations. When the working time at targets is also taken into account, the difference is slightly less than 1 \%. The computational cost of a single iteration is constant. Doubling the number of iterations also doubles the solving time. In figure~\ref{fig:iterations} the solving time is doubled on every step. It can be seen that the benefits of increasing the number of iterations in the algorithm gradually lower until they become nonexisting at 2048 iterations. 
 
 \begin{figure}[h]
   \begin{center}
     \includegraphics[width=\textwidth]{images/iterations.png}
-    \caption{The total time cost of all routes with varying numbers of iterations. With 0 iterations the solution is just the initial solution created by jsprit.}
+    \caption{The total driving time cost of all routes with varying numbers of iterations. With 0 iterations the solution is just the initial solution created by jsprit.}
     \label{fig:iterations}
   \end{center}
 \end{figure} 
@@ -31,7 +31,7 @@ If the routes were produced company-wide and then assigned to the technicians af
 
 \section{Customer's perspective}
 
-The customer was able to run the program and make it produce the expected output. The customer was overall pleased with the program's output and found that it could be used for planning routes. 
+The customer was able to run the program and make it produce the expected output. The customer was overall pleased with the program's output and found that it could be used for planning routes. The quality of the routes was similar to that of routes produced by manual labour. This was determined by counting the number of days needed to handle a set of jobs.  
 
 This program, a preliminary demo of what is possible to do, caused interest in the client company to continue the development the work planning procedures used in the company and automate them further. The next step would be optimising the way the job targets are assigned to the various technicians. This will likely provide much more optimal results, as inefficient allocation of jobs might make it impossible to do a the routing process itself well. Automating the whole process would also grant the possibility of objectively comparing different approaches to work planning, as one method will provide a less traveling overhead than another and the results are immediately measureable.   
 

@@ -26,6 +26,8 @@ Because the algorithm is CPU-intensive, the more low-level languages take preced
 
 Due to the performance-centric nature of the algorithm, it is important that the language chosen can be profiled to see which parts of the algorithm are the most resource-intensive. Though most modern languages fulfill this requirement, it is worthy of mentioning. 
 
+As the library I deemed most suitable for this project was Java-based and since there was no significant downsides to using Java, I used it as the language for the program.
+
 
 \subsection{Choosing the library to use}
 
@@ -33,7 +35,7 @@ The important criteria for choosing the libraries to use are performance, soluti
 
 My main strategy when picking the library to use was to read the API documentation to see if it supported the functionality I need. Since there are so many different variations of the VRP, there are also numerous types of libraries, most of which were specialised for a specific kind of VRP. If a library was aimed for a different purpose it became apparent quickly. Then I examined how well the library has been maintained and how clear the documentation is.
 
-To see if a library was suitable for my requirements, I looked at the API provided by the library and determined if the API supported the functionality I required. If there was no built-in support, I looked how well the library supported writing additional custom constraints to be use in the route generation. I also considered the number and variety of usage examples as one criterion for the decision, as it is a clear indication whether the library supports the various use cases required in the context of this thesis. This method of choosing a library eventually led me to pick a Java-based library Jsprit by Stefan Schröder\cite{jsprit}. 
+To see if a library was suitable for my requirements, I looked at the API provided by the library and determined if the API supported the functionality I required. If there was no built-in support, I looked how well the library supported writing additional custom constraints to be used in the route generation. I also considered the number and variety of usage examples as one criterion for the decision, as it is a clear indication whether the library supports the various use cases required in the context of this thesis. This method of choosing a library eventually led me to pick a Java-based library Jsprit by Stefan Schröder\cite{jsprit}. In subsection~\ref{subsection:otherlibs} I list other libraries I researched for this task.
 
 
 \subsection{Jsprit routing library}
@@ -62,8 +64,9 @@ Jsprit has built-in xml generator for outputting the solution's route data. It a
 
 
 \subsection{Other VRP libraries}
+\label{subsection:otherlibs}
 
-I looked into several libraries also made for solving VRPs. This is far from an exhaustive list of the various free libraries available, but might give some pointers for people who are also interested in VRP solving.  
+I looked into several libraries also made for solving VRPs. This is far from an exhaustive list of the various free libraries available, but might give some pointers for people who are also interested in VRP solving. These were picked according to the number and quality of links to them on the web, translating into prioritised search engine results. 
 
 Other libraries I researched were:
 

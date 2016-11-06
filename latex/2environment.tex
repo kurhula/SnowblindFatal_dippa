@@ -44,10 +44,9 @@ The input data for the program comes from the client company's sales data. The d
 \item Estimates of the technicians' performances. How fast they are at the job.
 \end{itemize}
 
-To prevent the algorithm from becoming overly complex, the time and resource requirements of a single job should be simplified as much as possible. This means that various weights need to be applied to various tasks and installation items, with bigger and heavier items taking more time and difficult building type or installation location also creating additional time costs for the job. The end result should be the following parameters per job target:
+Since the installation items are delivered separately, capacity is of no concern for the VRP. To prevent the algorithm from becoming overly complex, the time and resource requirements of a single job should be simplified as much as possible. This means that various weights need to be applied to various tasks and installation items, with bigger and heavier items taking more time and difficult building type or installation location also creating additional time costs for the job. The end result should be the following parameters per job target:
 
 \begin{itemize}
-\item Vehicle capacity requirements of the installation items and other equipment.
 \item Total time requirement for the technicians, affected by the house type and the amount of work to be done at the location.
 \item Distance and traveling time to other job targets and depot. 
 \end{itemize}

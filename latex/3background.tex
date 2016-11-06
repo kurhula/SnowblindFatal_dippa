@@ -13,14 +13,14 @@
 
 
 
-The basic VRP can be defined with a graph $G = (V, A)$ where $V = \{v_1, v_2, v_3\dots\}$ represents the vertices, i.e. the depot and targets for the visitations and $A = \{(v_i, v_j): i \neq j \}$ represents the arcs between the vertices. The vertex $v_0$ typically represents the depot. For every arc, there is a non-negative travel cost $C=(c_{ij})$. In this context, it is used to represent the traveling time between vertices. If the travel cost is symmetric between all pairs of vertices, an undirected graph $G = (V, E)$ can be used instead, where $E=\{(i, j) : i, j \in V, i < j\}$. In all cases, the end result is an all-to-all network. \cite{laporte2007you} 
+The basic VRP can be defined with a complete graph $G = (V, A)$ where $V = \{v_0, v_1, v_2 \dots\}$ represents the vertices, i.e. the depot and targets for the visitations and $A = \{(v_i, v_j): i, j \in V, i \neq j \}$ represents the arcs between the vertices. The vertex $v_0$ typically represents the depot. For every arc, there is a non-negative travel cost $C=(c_{ij})$. In this context, it is used to represent the traveling time between vertices. If the travel cost is symmetric between all pairs of vertices, an undirected graph $G = (V, E)$ can be used instead, where $E=\{(i, j) : i, j \in V, i < j\}$. In all cases, the end result is an all-to-all network. \cite{laporte2007you} 
 
-The main idea in the network is that every node (i.e. vertex) has a connecting edge to every other node. Even if in real life there would be overlapping in the routes as one road probably leads to more than just one node, for the sake of the problem the edges are considered unique, as can be seen in Figure~\ref{fig:reallifenetwork}. In other words, even though the road map of a country does not consist of an all-to-all type network topology, the mathematical model used for this problem uses one. 
+The main idea in the network is that every node (i.e. vertex) has a connecting edge to every other node. Even if in real life there would be overlapping in the routes as one road probably leads to more than just one node, for the sake of the problem the edges are considered unique, as can be seen in Figure~\ref{fig:reallifenetwork}. In other words, even though the road map of a country does not consist of an all-to-all type network topology, the mathematical model used for this problem uses one. Even though the following diagrams do not show the lines between nodes unless they are utilised by a route, it can always be assumed that from every node there is a direct path to all of the rest of the nodes. 
 
 \begin{figure}[h]
   \begin{center}
     \includegraphics{images/simplenetwork.pdf}
-    \caption{Real life network and the mathematical network}
+    \caption{Real life network and the mathematical network. For example, in a VRP, if a vehicle wanted to go from depot to node 1 and back to the depot, the node 2 would be skipped, even if the real world route does go via node 2. The distance from depot to node 1 is calculated as the sum of the distances from Depot to node 2 and from node 2 to node 1, but past that, node 2 can be disregarded if it is not part of the route. }
     \label{fig:reallifenetwork}
   \end{center}
 \end{figure}
@@ -41,7 +41,7 @@ The following conditions must hold true:
 
 \begin{equation}
 \label{eq:baseformula2}
-\displaystyle \sum_{j \in V \setminus\{0\}} x_{0j} = 2m,
+\displaystyle \sum_{j \in V \setminus\{v_0\}} x_{0j} = 2m,
 \end{equation}
 
 \noindent
@@ -57,7 +57,7 @@ meaning that given $m$ routes, the edges between the depot and other vertices ar
 \begin{equation}
 \begin{aligned}
 \label{eq:baseformula3}
-\displaystyle\sum_{i < k} x_{ik} + \displaystyle\sum_{j > k} x_{kj} = 2 && (k \in V \setminus\{0\}),
+\displaystyle\sum_{i < k} x_{ik} + \displaystyle\sum_{j > k} x_{kj} = 2 && (k \in V \setminus\{v_0\}),
 \end{aligned}
 \end{equation}
 
@@ -72,7 +72,7 @@ If $b(S)$ represents the minimum number of vehicles required to satisfy the need
 \begin{aligned}
 \label{eq:baseformula4}
 \displaystyle\sum_{\substack{i \in S, j \notin S \\ 
-\text{ or } i \notin S, j \in S}} x_{ij} \geq 2b(S) && (S \subset V \setminus\{0\}).
+\text{ or } i \notin S, j \in S}} x_{ij} \geq 2b(S) && (S \subset V \setminus\{v_0\}).
 \end{aligned}
 \end{equation}
 
@@ -84,7 +84,7 @@ means the number of edges travelled between the vertices in the network containe
 \begin{equation}
 \begin{aligned}
 \label{eq:baseformula5}
-x_{i,j} = 0 \text{ or } 1 && (i, j \in V\setminus\{0\})
+x_{i,j} = 0 \text{ or } 1 && (i, j \in V\setminus\{v_0\})
 \end{aligned}
 \end{equation}
 
@@ -94,12 +94,12 @@ and
 \begin{equation}
 \begin{aligned}
 \label{eq:baseformula6}
-x_{0,j} = 0, 1 \text{ or } 2 && (j \in V\setminus\{0\})
+x_{0,j} = 0, 1 \text{ or } 2 && (j \in V\setminus\{v_0\})
 \end{aligned}
 \end{equation}
 
 \noindent
-mean that every edge whose other end is the depot is travelled at most two times, while the rest of the edges are traveled once at most. \cite{laporte2007you}
+mean that every edge whose other end is the depot is travelled at most two times, while the rest of the edges are traveled once at most. The reason why an edge can be traveled twice if it connects to the depot is that a route can consist only of visiting a single node and returning back to the depot. Using edges not connected to the depot twice would be pointless in all cases, as it would mean that the route returns to a node that has already been visited. \cite{laporte2007you}
 
 
 
@@ -110,6 +110,15 @@ mean that every edge whose other end is the depot is travelled at most two times
 The real life needs of route planning are rarely satisfied with the basic vehicle routing problem. There are typically additional constraints and an increased complexity that require expanding the problem statement. The vehicles used are probably not identical in terms of capacity and cost. The number of depots might also be greater than 1 and each target has to be allocated to one of them. \cite{salhi2014multi} In addition, there might be specific time windows during which the targets have to be visited \cite{ghoseiri2010multi}. 
 
 All of these additional features can be combined into a multitude of variations of the VRP. As all the variations add to the complexity of the VRP, they too are NP-complete. The variations listed here represent the most common types of VRP, but in addition, there are more specific types still available, such as one where only certain types of vehicles may visit certain targets. \cite{montoya2015literature} 
+
+The variation employed in this thesis is a VRP with time windows, because the business logic of the client company dictates that customers need to be served within a certain time period. Vehicle capacity is not an issue since the installation items are delivered beforehand to the target sites. If the algorithm was to also allocate the jobs to the technicians, the problem to be solved would be a multi depot VRP with time windows. However, the client company preferred to keep that feature out of scope of the project. 
+
+
+\subsection{Vehicle routing problem with time windows}
+
+Time windows and other scheduling constraints are common in real world and thus including them in VRP is crucial in order to get results that are applicable in common business cases. These can include postal, food or cargo delivery and service visits where it is common that the customer wants the delivery to occur during a specific time. \cite{cordeau2000vrp}
+
+To define vehicle routing problem with time windows (VRPTW), let $s_i$ denote the time that a vehicle has to spend at a target $i$ and $b_i$ denote the time at which the delivery of the service or goods begins. The earliest time the target accepts the start of the delivery is $e_i$ and the latest is $l_i$. If a vehicle arrives too early at $j$, it will have to wait so that the earliest time it can deliver the goods or services is $b_j = \max\{e_j, b_i + s_i + t_{ij}\}$. Here $t_{ij}$ represents the time required to travel between $i$ and $j$. \cite{solomon1987algorithms}
 
 
 \subsection{Multi-depot Vehicle routing problem}
@@ -127,13 +136,6 @@ Multi-depot Vehicle routing problem (MDVRP) is a variation of VRP where there ar
 \subsection{Heterogenous fleet vehicle routing problem}
 
 In real world scenarios, it is uncommon that all the vehicles in a fleet are identical. A typical variation of the VRP called heterogenous fleet vehicle routing problem (HVRP) one where the vehicles are not assumed to be identical. There is a fixed cost associated with each vehicle type and a variable cost per distance unit. Vehicle types also have unique capacities which play an important role in route generation. \cite{gendreau1999tabu}
-
-
-\subsection{Vehicle routing problem with time windows}
-
-Time windows and other scheduling constraints are common in real world and thus including them in VRP is crucial in order to get results that are applicable in common business cases. These can include postal, food or cargo delivery and service visits where it is common that the customer wants the delivery to occur during a specific time. \cite{cordeau2000vrp}
-
-To define vehicle routing problem with time windows (VRPTW), let $s_i$ denote the time that a vehicle has to spend at a target $i$ and $b_i$ denote the time at which the delivery of the service or goods begins. The earliest time the target accepts the start of the delivery is $e_i$ and the latest is $l_i$. If a vehicle arrives too early at $j$, it will have to wait so that the earliest time it can deliver the goods or services is $b_j = \max\{e_j, b_i + s_i + t_{ij}\}$. Here $t_{ij}$ represents the time required to travel between $i$ and $j$. \cite{solomon1987algorithms}
 
 
 \subsection{Vehicle routing problem with pickup and delivery}
