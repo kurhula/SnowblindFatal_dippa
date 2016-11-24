@@ -215,12 +215,13 @@
 %                     first page of the first chapter
 %   twoinstructors  - changes the title of instructors to plural form
 %   twosupervisors  - changes the title of supervisors to plural form
-\usepackage[mydraft]{aalto-thesis}
+%\usepackage[mydraft]{aalto-thesis}
 %\usepackage[mydraft,doublenumbering]{aalto-thesis}
-%\usepackage{aalto-thesis}
+\usepackage{aalto-thesis} 
 
 
 
+\usepackage{float}
 \usepackage{mathtools}
 
 \usepackage{graphicx}
@@ -273,9 +274,9 @@ heuristisia menetelmiä ajoneuvojen reititysongelmaan}
 \newcommand{\SUBTITLE}{}
 \newcommand{\FSUBTITLE}{}
 \newcommand{\SSUBTITLE}{}
-\newcommand{\DATE}{October 15, 2016}
-\newcommand{\FDATE}{15. lokakuuta 2016}
-\newcommand{\SDATE}{Den 15 Oktober 2016}
+\newcommand{\DATE}{November 24, 2016}
+\newcommand{\FDATE}{24. marraskuuta 2016}
+\newcommand{\SDATE}{Den 24 November 2016}
 
 % Supervisors and instructors
 % ------------------------------------------------------------------
@@ -324,8 +325,8 @@ heuristisia menetelmiä ajoneuvojen reititysongelmaan}
 \newcommand{\SPROFESSORSHIP}{Programteknik}
 % Professorship code is the same in all languages
 \newcommand{\PROFCODE}{T-106}
-\newcommand{\KEYWORDS}{vehicle routing problem, heurestic, optimisation}
-\newcommand{\FKEYWORDS}{vehicle routing problem, heurestiikka, optimointi}
+\newcommand{\KEYWORDS}{vehicle routing problem, heuristic, optimisation}
+\newcommand{\FKEYWORDS}{vehicle routing problem, heuristiikka, optimointi}
 \newcommand{\SKEYWORDS}{}
 \newcommand{\LANGUAGE}{English}
 \newcommand{\FLANGUAGE}{Englanti}
@@ -415,7 +416,7 @@ heuristisia menetelmiä ajoneuvojen reititysongelmaan}
 % Abstract in English
 % ------------------------------------------------------------------
 \thesisabstract{english}{
-The vehicle routing problem is a classic combinatorial problem with numerous real world applications. The basic problem is as follows: considering a depot and a list of service targets that all need to be visited, one needs to find the paths starting and ending at the depot with which the traveling time is as low as possible. In other words, VRP is the same as traveling salesman problem, except that there can be numerous routes and there are capacity limits to a single route. Because the problem is NP hard, finding the optimal solution is often out of the question. However, through heuristics, very good solutions can be found and used.
+The vehicle routing problem is a classic combinatorial problem with numerous real world applications. The basic problem is as follows: considering a depot and a list of service targets that all need to be visited, one needs to find the paths starting and ending at the depot with which the travelling time is as low as possible. In other words, VRP is the same as travelling salesman problem, except that there can be numerous routes and there are capacity limits to a single route. Because the problem is NP hard, finding the optimal solution is often out of the question. However, through heuristics, very good solutions can be found and used.
 
 From package delivery to cargo transports and taxi services, VRPs are a part of our everyday life. In this thesis we present that an algorithmic approach can be applied to a construction company's job planning process to automate manual labour and produce more optimal results. This is accomplished by abstracting the company's business logic, such as job target locations and estimated working times into parameters for the algorithm. The algorithm then creates routes for technicians covering all upcoming job targets so that the driving time is minimised. Due to the simplicity of the routing, the main benefit in this case comes from the automatisation itself, as the quality of the plans is close to the results of manual labour.
 
@@ -425,7 +426,7 @@ Though the jobs are still manually assigned to technicians and the algorithm onl
 % Abstract in Finnish
 % ------------------------------------------------------------------
 \thesisabstract{finnish}{
-Ajoneuvon reititysongelma (Vehicle Routing Problem, VRP) on klassinen kombinatorinen ongelma, jota voidaan soveltaa lukuisiin tosielämän ongelmiin. Ajoneuvon reititysongelma voidaan kuvata seuraavasti: Etsi reitit, joita käyttämällä käydään kaikissa työkohteissa siten, että matka-aika minimoidaan ja jokainen reitti alkaa ja päättyy tukikohtaan. Se muistuttaa vahvasti kaupparatsun ongelmaa (Traveling Salesman Problem, TSP), paitsi että reittejä voi olla useita ja yksittäinen reitti ei voi ylittää sille asetettuja kapasiteettirajoituksia. Ajoneuvon reititysongelma on NP-täydellinen, joten optimaalisen ratkaisun tuottaminen on usein laskennallisesti mahdotonta. Kehittyneet heuristiikat kykenevät kuitenkin tuottamaan erittäin hyviä ja käyttökelpoisia ratkaisuja.
+Ajoneuvon reititysongelma (Vehicle Routing Problem, VRP) on klassinen kombinatorinen ongelma, jota voidaan soveltaa lukuisiin tosielämän ongelmiin. Ajoneuvon reititysongelma voidaan kuvata seuraavasti: Etsi reitit, joita käyttämällä käydään kaikissa työkohteissa siten, että matka-aika minimoidaan ja jokainen reitti alkaa ja päättyy tukikohtaan. Se muistuttaa vahvasti kaupparatsun ongelmaa (Travelling Salesman Problem, TSP), paitsi että reittejä voi olla useita ja yksittäinen reitti ei voi ylittää sille asetettuja kapasiteettirajoituksia. Ajoneuvon reititysongelma on NP-täydellinen, joten optimaalisen ratkaisun tuottaminen on usein laskennallisesti mahdotonta. Kehittyneet heuristiikat kykenevät kuitenkin tuottamaan erittäin hyviä ja käyttökelpoisia ratkaisuja.
 
 Pakettien ja rahdin toimituksesta aina taksiliikenteeseen, ajoneuvon reititysongelma liittyy vahvasti jokapäiväiseen elämäämme. Tässä opinnäytetyössä esitetään algoritminen lähestymistapa rakennusyrityksen työnsuunnittelun automatisointiin. Sen avulla pystytään vähentämään ihmistyön tarvetta ja tuottamaan parempia tuloksia. Abstrahoimalla yrityksen toimintalogiikkaa, kuten työkohteiden sijainteja ja työmääräarvioita voidaan näitä käyttää parametreina algoritmille, joka luo reitit työkohteiden kautta siten, että ajoaika minimoidaan. Reitityksen yksinkertaisuuden vuoksi tässä tapauksessa suurin hyöty saavutettiin itse automatisaatiosta, sillä reittisuunnitelmien laatu on likimain käsityöllä tehtyjen suunnitelmien tasoa.
 

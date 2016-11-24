@@ -13,7 +13,7 @@
 
 
 
-The basic VRP can be defined with a complete graph $G = (V, A)$ where $V = \{v_0, v_1, v_2 \dots\}$ represents the vertices, i.e. the depot and targets for the visitations and $A = \{(v_i, v_j): i, j \in V, i \neq j \}$ represents the arcs between the vertices. The vertex $v_0$ typically represents the depot. For every arc, there is a non-negative travel cost $C=(c_{ij})$. In this context, it is used to represent the traveling time between vertices. If the travel cost is symmetric between all pairs of vertices, an undirected graph $G = (V, E)$ can be used instead, where $E=\{(i, j) : i, j \in V, i < j\}$. In all cases, the end result is an all-to-all network. \cite{laporte2007you} 
+The basic VRP can be defined with a complete graph $G = (V, A)$ where $V = \{v_0, v_1, v_2 \dots\}$ represents the vertices, i.e. the depot and targets for the visitations and $A = \{(v_i, v_j): i, j \in V, i \neq j \}$ represents the arcs between the vertices. The vertex $v_0$ typically represents the depot. For every arc, there is a non-negative travel cost $C=(c_{ij})$. In this context, it is used to represent the travelling time between vertices. If the travel cost is symmetric between all pairs of vertices, an undirected graph $G = (V, E)$ can be used instead, where $E=\{(i, j) : i, j \in V, i < j\}$. In all cases, the end result is an all-to-all network. \cite{laporte2007you} 
 
 The main idea in the network is that every node (i.e. vertex) has a connecting edge to every other node. Even if in real life there would be overlapping in the routes as one road probably leads to more than just one node, for the sake of the problem the edges are considered unique, as can be seen in Figure~\ref{fig:reallifenetwork}. In other words, even though the road map of a country does not consist of an all-to-all type network topology, the mathematical model used for this problem uses one. Even though the following diagrams do not show the lines between nodes unless they are utilised by a route, it can always be assumed that from every node there is a direct path to all of the rest of the nodes. 
 
@@ -27,7 +27,7 @@ The main idea in the network is that every node (i.e. vertex) has a connecting e
 
 The first vertex in $V$ represents the depot, where all the vehicles start from and where they must end their trips. $m$ identical vehicles have a capacity denoted by $Q$ which symbolises the resources available for each trip. In the classic VRP, $m$ is logically equivalent to the number of trips needed to visit every customer. With time windows this no longer holds true. Every customer vertex $i \in V\setminus\{v_0\}$ has a demand $q_i \leq Q$ associated with it. This symbolises the various resources, including time, required at the target. \cite{laporte2007you}
 
-Vehicle routing problem is NP-complete and it is a superset of the traveling salesman problem. In traveling salesman problem, the number of vehicles is $m = 1$, there is no upper limit on the costs of a route and the capacity of the vehicle is greater than the combined requirement of all the nodes in the network ($Q = \infty$). \cite{laporte2007you} The classic VRP is sometimes called the capacitated vehicle routing problem (CVRP). \cite{hassanzadeh2009location}
+Vehicle routing problem is NP-complete and it is a superset of the travelling salesman problem. In travelling salesman problem, the number of vehicles is $m = 1$, there is no upper limit on the costs of a route and the capacity of the vehicle is greater than the combined requirement of all the nodes in the network ($Q = \infty$). \cite{laporte2007you} The classic VRP is sometimes called the capacitated vehicle routing problem (CVRP). \cite{hassanzadeh2009location}
 
 Let $x_{ij}$ denote the number of trips made over the edge $[i, j]$ in a solution. The total cost that should be minimised is then:
 
@@ -46,9 +46,9 @@ The following conditions must hold true:
 
 \noindent
 meaning that given $m$ routes, the edges between the depot and other vertices are used exactly $2m$ times, as seen in Figure~\ref{fig:basecond1}. \cite{laporte2007you}
-\begin{figure}[h]
+\begin{figure}[H]
   \begin{center}
-    \includegraphics{images/basecond1.pdf}
+    \includegraphics[height=6.5cm,keepaspectratio]{images/basecond1.pdf}
     \caption{Routes to and from the depot}
     \label{fig:basecond1}
   \end{center}
@@ -99,7 +99,7 @@ x_{0,j} = 0, 1 \text{ or } 2 && (j \in V\setminus\{v_0\})
 \end{equation}
 
 \noindent
-mean that every edge whose other end is the depot is travelled at most two times, while the rest of the edges are traveled once at most. The reason why an edge can be traveled twice if it connects to the depot is that a route can consist only of visiting a single node and returning back to the depot. Using edges not connected to the depot twice would be pointless in all cases, as it would mean that the route returns to a node that has already been visited. \cite{laporte2007you}
+mean that every edge whose other end is the depot is travelled at most two times, while the rest of the edges are travelled once at most. The reason why an edge can be travelled twice if it connects to the depot is that a route can consist only of visiting a single node and returning back to the depot. Using edges not connected to the depot twice would be pointless in all cases, as it would mean that the route returns to a node that has already been visited. \cite{laporte2007you}
 
 
 
@@ -125,7 +125,8 @@ To define vehicle routing problem with time windows (VRPTW), let $s_i$ denote th
 
 Multi-depot Vehicle routing problem (MDVRP) is a variation of VRP where there are additional depots which can be utilised as the start and end points of routes as can be seen in Figure~\ref{fig:multidepot}. A vehicle must start and end the route at the same depot. While at first it might seem that MDVRP can be just split into multiple single depot VRPs by assigning each target to the nearest depot, this leads to suboptimal solutions. \cite{salhi2014multi}
 
-\begin{figure}[h]
+
+\begin{figure}[H]
   \begin{center}
     \includegraphics{images/multidepot.pdf}
     \caption{A VRP with two depots}
@@ -135,7 +136,7 @@ Multi-depot Vehicle routing problem (MDVRP) is a variation of VRP where there ar
 
 \subsection{Heterogenous fleet vehicle routing problem}
 
-In real world scenarios, it is uncommon that all the vehicles in a fleet are identical. A typical variation of the VRP called heterogenous fleet vehicle routing problem (HVRP) one where the vehicles are not assumed to be identical. There is a fixed cost associated with each vehicle type and a variable cost per distance unit. Vehicle types also have unique capacities which play an important role in route generation. \cite{gendreau1999tabu}
+In real world scenarios, it is uncommon that all the vehicles in a fleet are identical. A typical variation of the VRP called heterogeneous fleet vehicle routing problem (HVRP) one where the vehicles are not assumed to be identical. There is a fixed cost associated with each vehicle type and a variable cost per distance unit. Vehicle types also have unique capacities which play an important role in route generation. \cite{gendreau1999tabu}
 
 
 \subsection{Vehicle routing problem with pickup and delivery}
@@ -150,12 +151,12 @@ While the classic VRP assumes a single time period, a single day for example, du
 
 \subsection{Location routing problem}
 
-In location routing problem (LRP), the location of the depots has to be determined before creating the routes. The factors that have to be taken into account are the one time and running costs of the depots and the traveling costs that are based on the locations of the depots. The main objective is to position the depots as close to the customers as possible. In practice, the maximum size of the depot is also limited. A large depot in a city centrum might incur too large costs in order to be feasible. Once the locations of the depots has been decided, the problem turns into a multi-depot vehicle routing problem, though naturally the positions can be altered at any point during the solving. \cite{tuzun1999two}
+In location routing problem (LRP), the location of the depots has to be determined before creating the routes. The factors that have to be taken into account are the one time and running costs of the depots and the travelling costs that are based on the locations of the depots. The main objective is to position the depots as close to the customers as possible. In practice, the maximum size of the depot is also limited. A large depot in a city centre might incur too large costs in order to be feasible. Once the locations of the depots has been decided, the problem turns into a multi-depot vehicle routing problem, though naturally the positions can be altered at any point during the solving. \cite{tuzun1999two}
 
 
 \subsection{Green vehicle routing problem}
 
-Due to the apparent need to cut down $CO^2$ emissions and the fact that the vast majority of vehicles, especially heavy transport, run on fossil fuels, there is an increasing motivation to pay more attention to the environmental aspects of transportation. Green vehicle routing problem (GVRP, also known as emissions vehicle routing problem) aims to minimise emissions and helps routing for vehicles that may require special fueling stations. \cite{erdougan2012green}
+Due to the apparent need to cut down $CO^2$ emissions and the fact that the vast majority of vehicles, especially heavy transport, run on fossil fuels, there is an increasing motivation to pay more attention to the environmental aspects of transportation. Green vehicle routing problem (GVRP, also known as emissions vehicle routing problem) aims to minimise emissions and helps routing for vehicles that may require special fuelling stations. \cite{erdougan2012green}
 
 
 
@@ -169,13 +170,13 @@ Classical heuristics produce good results in reasonable computing time and cover
 
 For notation, we will use (0, $i$, $j$, $k$, 0) to denote a route that starts at depot 0 and goes to targets $i$, $j$ and $k$ before returning to the depot. In case of multiple depots, they will be denoted with other indexes, e.g. (1, $l$, $m$, 1).
 
-
+\clearpage
 
 \subsection{Savings algorithm}
 
 The savings algorithm is one of the most basic algorithms for VRP. It assumes that the number of vehicles is a decision variable. Figure~\ref{fig:savings1} shows an example of how the savings algorithm progresses.
 
-\begin{figure}[h]
+\begin{figure}[H]
   \begin{center}
     \includegraphics{images/Savings1.pdf}
     \caption{An example of savings algorithm progression where car capacity is 3 and demand per node is 1}
@@ -183,9 +184,7 @@ The savings algorithm is one of the most basic algorithms for VRP. It assumes th
   \end{center}
 \end{figure}
 
-\bigskip
-\noindent
-Create one vehicle route per node so that the route just goes to the target and comes back to the depot. This will result in $n$ vehicle routes (0, $i$, 0) for $i = 1, \ldots, n$. \cite{reimann2004d}
+The algorithm initially creates one vehicle route per node so that the route just goes to the target and comes back to the depot. This will result in $n$ vehicle routes (0, $i$, 0) for $i = 1, \ldots, n$. \cite{reimann2004d}
 
 \medskip
 \noindent
@@ -204,26 +203,28 @@ Create one vehicle route per node so that the route just goes to the target and 
 
 
 
-\subsection{Sweep algorithm}			
-
-Popularised by Gillet and Miller in 1974, the sweep algorithm is usable on data sets where the coordinates of the targets are known. It is based on calculating the polar coordinates between the depot and the targets so that one arbitarily chosen target represents the zero angle. The targets are then sorted according to the polar angle. The sorted targets are added in order to the new route until the cost or capacity limit of a single route has been reached and no more new targets can be inserted. Then a new route is created and the algorithm is repeated until all targets have been assigned to a route. \cite{gillett1974heuristic}
-
-The found routes are then optimised with any traveling salesman solver. Since the routes are supposedly relatively small at this point, solving the individual TSPs should be a lightweight operation. Once each route has been initially created and optimised, the algorithm then tries to swap neighbour routes' targets according to their distance from the depot and the angle to the next route. If the swap improves the solution, the target is moved to the other route. After no more improvements can be found through swapping, the algorithm finishes. \cite{gillett1974heuristic} Figure~\ref{fig:sweep1} shows an example of how the sweep algorithm works in practice. 
-
-The downside to this heuristic is that it doesn't take the road network into account during the sweep. It assumes that the geometrical distance is the most important piece of criteria. To counter this, it is typical to run the algorithm so that all targets get picked to be as the beginning point of the sweep. \cite{reimann2004d} 
+\subsection{Sweep algorithm}	
 
 
-\begin{figure}[h]
+Popularised by Gillet and Miller in 1974, the sweep algorithm is usable on data sets where the coordinates of the targets are known. It is based on calculating the polar coordinates between the depot and the targets so that one arbitrarily chosen target represents the zero angle. The targets are then sorted according to the polar angle. The sorted targets are added in order to the new route until the cost or capacity limit of a single route has been reached and no more new targets can be inserted. Then a new route is created and the algorithm is repeated until all targets have been assigned to a route. \cite{gillett1974heuristic}
+
+\begin{figure}[H]
   \begin{center}
     \includegraphics{images/Sweep1.pdf}
     \caption{An example of sweep algorithm progression where car capacity is 3 and demand per node is 1. In the final iteration some routes swap nodes to produce a more optimal solution.}
     \label{fig:sweep1}
   \end{center}
-\end{figure}
+\end{figure}		
+
+The found routes are then optimised with any travelling salesman solver. Since the routes are supposedly relatively small at this point, solving the individual TSPs should be a lightweight operation. Once each route has been initially created and optimised, the algorithm then tries to swap neighbour routes' targets according to their distance from the depot and the angle to the next route. If the swap improves the solution, the target is moved to the other route. After no more improvements can be found through swapping, the algorithm finishes. \cite{gillett1974heuristic} Figure~\ref{fig:sweep1} shows an example of how the sweep algorithm works in practice. 
+
+The downside to this heuristic is that it doesn't take the road network into account during the sweep. It assumes that the geometrical distance is the most important piece of criteria. To counter this, it is typical to run the algorithm so that all targets get picked to be as the beginning point of the sweep. \cite{reimann2004d} 
+
+
 
 \subsection{Petal algorithm}
 
-The petal algorithm resembles the sweep algorithm, as all the targets are first sorted according to their polar angle from the depot and an arbitarily chosen point. A set $S$ of possible routes called petals is then generated and optimised using TSP as above. The problem is then formulated as follows:
+The petal algorithm resembles the sweep algorithm, as all the targets are first sorted according to their polar angle from the depot and an arbitrarily chosen point. A set $S$ of possible routes called petals is then generated and optimised using TSP as above. The problem is then formulated as follows:
 
 \bigskip
 \noindent
@@ -260,7 +261,7 @@ where $a_{ik}$ is 1 only if the vertex $i$ is in the route $k$. \cite{laporte200
 
 \subsection{Greedy Randomized Adaptive Search Procedure (GRASP)}
 
-Greedy Randomized Adaptive Search Procedure is a typical heuristic used in combinatorial problems. First an initial solution is created using a greedy function which places nodes into routes according to the effect on solution quality. The best insertions are done first and the ones which increase the total traveling cost the most are inserted last. If a node cannot be inserted into any route without breaking constraints or if the insertion would cost more than making a new route, the node is inserted into a new route. \cite{kontoravdis1995grasp}
+Greedy Randomized Adaptive Search Procedure is a typical heuristic used in combinatorial problems. First an initial solution is created using a greedy function which places nodes into routes according to the effect on solution quality. The best insertions are done first and the ones which increase the total travelling cost the most are inserted last. If a node cannot be inserted into any route without breaking constraints or if the insertion would cost more than making a new route, the node is inserted into a new route. \cite{kontoravdis1995grasp}
 
 After the initial solution has been created, the algorithm performs local searches in order to try and improve the solution. It tries to randomly move single nodes to other routes while ensuring that the routes' constraints are not broken and that the new solutions are better than the previous one. \cite{kontoravdis1995grasp}
 
@@ -269,13 +270,16 @@ After the initial solution has been created, the algorithm performs local search
 
 The tabu search is based on randomly removing nodes from existing routes and adding them to other routes. Tabu search is used to optimise a solution already reached using a more basic solving method. What separates tabu search from more basic heuristics is that infeasible constraint-breaking solutions are temporarily allowed to prevent the algorithm from being too rigid. A change required to find a better solution might be so great that it is impossible to reach it by moving single nodes from one route to another and keeping the intermediate solutions valid. Illegal moves are accepted if they result in better moves becoming available later. \cite{gendreau1994tabu}
 
-Another special feature of the tabu search, and also where it gets its name from, is that the moves made during the solution finding process are put to a ``tabu list''. The algorithm avoids making these these moves to prevent searching solution space which has already been searched. \cite{gendreau1994tabu}
+Another special feature of the tabu search, and also where it gets its name from, is that the moves made during the solution finding process are put to a ``tabu list''. The algorithm avoids making these moves to prevent searching solution space which has already been searched. \cite{gendreau1994tabu}
  
 
 \subsection {Ruin and Recreate}
 \label{subsection:ruinandrecreate} 
 
-\begin{figure}[h]
+Developed by Schrimpf et al., the ruin and recreate algorithm is based on the concept of having a solution of varying quality as the base, after which all trips to a set of nodes are removed (``ruined''). The set can be picked randomly, from a radial area, or by some other rule. The intermediate result is the same solution as in the beginning, with some nodes not being serviced. The routes are then re-created so that every ruined node gets inserted into a route where it creates the least amount of additional time requirement so that no constraints (capacity, time, etc.) are broken. If it is impossible to insert a ruined node to a route without breaking constraints, a new route will be created. Once all the ruined nodes have been readded to routes, the algorithm can be repeated. An example run of the algorithm can be seen in Figure~\ref{fig:ruinrecreate}. \cite{schrimpf2000record} 
+
+
+\begin{figure}[H]
   \begin{center}
     \includegraphics[width=\textwidth]{images/ruinrecreate.pdf}
     \caption{An example of ruin and recreate progression where car capacity is 3 and demand per node is 1. The ruined nodes are picked at random.}
@@ -283,16 +287,13 @@ Another special feature of the tabu search, and also where it gets its name from
   \end{center}
 \end{figure}
 
-Developed by Schrimpf et al., the ruin and recreate algorithm is based on the concept of having a solution of varying quality as the base, after which all trips to a set of nodes are removed (``ruined''). The set can be picked randomly, from a radial area, or by some other rule. The intermediate result is the same solution as in the beginning, with some nodes not being serviced. The routes are then re-created so that every ruined node gets inserted into a route where it creates the least amount of additional time requirement so that no constraints (capacity, time, etc.) are broken. If it is impossible to insert a ruined node to a route without breaking constraints, a new route will be created. Once all the ruined nodes have been readded to routes, the algorithm can be repeated. An example run of the algorithm can be seen in Figure~\ref{fig:ruinrecreate}. \cite{schrimpf2000record} 
-
-
 Shrimpf et al. state that there are probably better and more elaborate algorithms for the recreation procedure, but that even with their simple scheme, very good results can be achieved. Likewise, there are numerous strategies to choose from for the ruin part of the algorithm. Also, choosing which solution to continue from after iterations affects results. One way is to always use the best results gotten so far, but it may also pay off to try to continue from a slightly worse solution. A big benefit of the algorithm is that it allows easy applying of custom constraints. \cite{schrimpf2000record} 
 
 This algorithm is used in the library I picked to use for the VRP program. In addition it employs optimisation features presented by Pisinger and Ropke\cite{pisinger2007general}.
 
-Due to the intuitive and simple nature of the ruin and recreate heuristic, it is easy to adjust the various phases of the algorithm as separate modules without affecting the rest of the algorithm. The ruining can be done randomly or by specific rules. For instance, nodes in routes with high traveling costs can be set to have a higher chance to be ruined. Routes which have not improved in past iterations can be set immune to the ruin phase. In case of time windows, nodes within a certain time frame can get priority for ruining. Capacity demand can also be used as a basis for the ruin strategy and it can be useful in cases where there is a delivery and pickup type of business logic involved. The advantage comes from exchanging packages of similar size to maximally utilise vehicle capacity. Historical knowledge can also aid in choosing the nodes to ruin. If certain edges have been present in all the best solutions so far, it can be beneficial to make the algorithm avoid ruining them. \cite{pisinger2007general}
+Due to the intuitive and simple nature of the ruin and recreate heuristic, it is easy to adjust the various phases of the algorithm as separate modules without affecting the rest of the algorithm. The ruining can be done randomly or by specific rules. For instance, nodes in routes with high travelling costs can be set to have a higher chance to be ruined. Routes which have not improved in past iterations can be set immune to the ruin phase. In case of time windows, nodes within a certain time frame can get priority for ruining. Capacity demand can also be used as a basis for the ruin strategy and it can be useful in cases where there is a delivery and pickup type of business logic involved. The advantage comes from exchanging packages of similar size to maximally utilise vehicle capacity. Historical knowledge can also aid in choosing the nodes to ruin. If certain edges have been present in all the best solutions so far, it can be beneficial to make the algorithm avoid ruining them. \cite{pisinger2007general}
 
-The recreation phase likewise allows numerous ways to add optimisations. While inserting the ruined nodes into existing routes as greedily as possible already gives good results, more sophisticated recreation methods can yield better results. Placing the easiest nodes first will give fewer options to place the more difficult ones, potentially preventing discovery of more optimal routes. In addition to using route costs to determine which routes the ruined nodes go to, adding some randomly determined costs will steer the algorithm to try out solutions it otherwise would not consider. Each of the recreated routes can finally be optimised using the traveling salesman problem. \cite{pisinger2007general}  
+The recreation phase likewise allows numerous ways to add optimisations. While inserting the ruined nodes into existing routes as greedily as possible already gives good results, more sophisticated recreation methods can yield better results. Placing the easiest nodes first will give fewer options to place the more difficult ones, potentially preventing discovery of more optimal routes. In addition to using route costs to determine which routes the ruined nodes go to, adding some randomly determined costs will steer the algorithm to try out solutions it otherwise would not consider. Each of the recreated routes can finally be optimised using the travelling salesman problem. \cite{pisinger2007general}  
 
 Choosing the most promising solution for a new iteration of the algorithm can also give an advantage. After the recreation phase and before the next ruining, always picking the best solution found so far might not result in the finding the best solution in the end. It is possible that a seemingly good solution might need a very improbable ruin in order to improve to a better one, but the better result might be more achievable if the algorithm allows for a slightly worse intermediate solution to be used as a base. Likewise, it can pay off to allow temporarily breaking the constraints to see if it leads to more varying and potentially better solutions. \cite{schrimpf2000record}    
 
@@ -302,16 +303,16 @@ Choosing the most promising solution for a new iteration of the algorithm can al
 
 There are also numerous highly sophisticated heuristics for optimising solutions. These are often inspired by nature, especially swarm behaviour of insects. Many species of insects follow a relatively straightforward set of rules, yet they are capable of optimising their communal activity so that the route distance to a food source for example is minimised. Applying this kind of logic to solving VRPs has resulted in numerous advanced algorithms. The specifics of these algorithms are too complex to be fitted in the scope of this thesis, but I will describe their idea on a general level. More information regarding them can be found from the cited sources. \cite{karaboga2014comprehensive}
 
-Ant colony optimisation (ACO) is based on the natural behavior of ants in nature. A swarm of ants is capable of creating good routes to find resources and nourishment for the hive using pheromones which guide other ants. When encountering a pheromone trail, an ant is more likely to follow it the stronger the trail is. Ants which find a short route to a source of nourishment will mark their paths more often as they move between the nest and the target more often, resulting in a stronger pheromone trail and higher probability for other ants to follow the marked path. As the pheromones constantly evaporate, the unoptimal and less used routes will constantly diminish in strength. Since ants' decision making process does not always choose the path with pheromones, new paths are constantly probed. Creating a swarm of virtual ants can be used to find solutions to the vehicle routing problem. \cite{bell2004ant} 
+Ant colony optimisation (ACO) is based on the natural behaviour of ants in nature. A swarm of ants is capable of creating good routes to find resources and nourishment for the hive using pheromones which guide other ants. When encountering a pheromone trail, an ant is more likely to follow it the stronger the trail is. Ants which find a short route to a source of nourishment will mark their paths more often as they move between the nest and the target more often, resulting in a stronger pheromone trail and higher probability for other ants to follow the marked path. As the pheromones constantly evaporate, the suboptimal and less used routes will constantly diminish in strength. Since ants' decision making process does not always choose the path with pheromones, new paths are constantly probed. Creating a swarm of virtual ants can be used to find solutions to the vehicle routing problem. \cite{bell2004ant} 
 
 Artificial bee colony (ABC) solving method uses an abstraction where the solutions represent food sources, and better quality solutions represent higher quality nectar. Scout bees try to find new sources of nectar and onlookers pick from the found sources the ones which can be further used, upon which they become employed bees. Employed bees find new sources of nectar on each iteration of the algorithm and abandon old ones if they have not been providing as much nectar as the new findings or if there has not been an improvement in the food source for a predetermined number of iterations. \cite{szeto2011artificial}
 
-Genetic algorithms (GA) use a population of solutions as a base. Offspring are created by merging these solutions together, keeping some characteristics of the different solutions. Natural selection is then applied to the new solutions. The best ones are used for further reproduction while the worst solutions are discarded. In the case of VRP, the goodness of a solution is determined by the total traveling time. Breaking constraints is also a negative aspect that lowers the chance of a solution to be used as a parent for the next generation. The most important aspects of genetic algorithms are the selection of the initial population and the breeding process itself. \cite{baker2003genetic}
+Genetic algorithms (GA) use a population of solutions as a base. Offspring are created by merging these solutions together, keeping some characteristics of the different solutions. Natural selection is then applied to the new solutions. The best ones are used for further reproduction while the worst solutions are discarded. In the case of VRP, the goodness of a solution is determined by the total travelling time. Breaking constraints is also a negative aspect that lowers the chance of a solution to be used as a parent for the next generation. The most important aspects of genetic algorithms are the selection of the initial population and the breeding process itself. \cite{baker2003genetic}
 
 
 \section{Comparison of algorithms}
 
-Comparing different VRP solving algorithms is quite difficult, especially if performance is taken into account. The hardware on which the algorithm is run as well as the specific implementation of an algorithm type serve a big role in how fast the algorithm completes. In iterative algorithms, there is no upper limit as to how long the algorithm can run and it might be impossible to reach the best possible solution reachable, since many times it is impossible to know if an even better solution might be found with additional iterations. 
+Comparing different VRP solving algorithms is quite difficult, especially if performance is taken into account. The hardware on which the algorithm is run as well as the specific implementation of an algorithm type serves a big role in how fast the algorithm completes. In iterative algorithms, there is no upper limit as to how long the algorithm can run and it might be impossible to reach the best possible solution reachable, since many times it is impossible to know if an even better solution might be found with additional iterations. 
 
 While there are some benchmark problem instances that many papers use in their results presentation, no standard exists, and whether two papers include results against the same instance is a matter of coincidence. Of the basic instances available, the papers select seemingly arbitrarily only some of them for results comparison. In addition, most papers compare the results only with similar solving methods or the currently best known results, making large scale comparison difficult. These differences can be explained in different algorithm types being aimed for different types of VRPs. It might not make sense to compare an algorithm solving a VRPTW with an algorithm capable of solving MDVRP.
 
